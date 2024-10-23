@@ -9,7 +9,7 @@ body {
     margin: 0; /* Remove default margin */
 }
 
-.login-container {
+.login-container, .modal-content {
     max-width: 400px;
     margin: auto;
     padding: 20px;

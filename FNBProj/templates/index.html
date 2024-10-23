@@ -44,15 +44,13 @@
         </footer>
     </div>
 
-    
-
     <!-- Registration Modal -->
     <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <div class="modal-dialog" >
+            <div class="modal-content" style="min-width: 500px;">
                 <h2 id="registerModalLabel" class="text-center">Register in CapitalMinded</h2>
-                <form id="registerForm" class="mx-auto">
-                    <div class="mb-3">
+                <form id="registerForm" class="mx-4">
+                    <div class="mb-3" style="display: none;">
                         <label for="userType" class="form-label">Register As</label>
                         <select class="form-select" id="userType" required>
                             <option value="" disabled selected>Select your role</option>
@@ -67,11 +65,18 @@
                         <small class="form-error-message" id="registerEmailError"></small>
                     </div>
                     <div class="mb-3">
-                        <label for="registerPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="registerPassword" placeholder="Create a password" required>
+                        <label for="registerPassword" class="form-label">Create Password</label>
+                        <input type="password" class="form-control" id="registerPassword" placeholder="Create a new password" required>
                         <small class="form-error-message" id="registerPasswordError"></small>
                     </div>
-                    <div class="business-owner-fields">
+
+                    <div class="mb-3">
+                        <label for="ConfirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="ConfirmPassword" placeholder="Confirm your password" required>
+                        <small class="form-error-message" id="registerPasswordError"></small>
+                    </div>
+
+                    <div class="business-owner-fields" style="display: none;">
                         <div class="mb-3">
                             <label for="businessName" class="form-label">Business Name</label>
                             <input type="text" class="form-control" id="businessName" placeholder="Business name(optional)">
@@ -112,13 +117,15 @@
                             <textarea class="form-control" id="businessDescription" rows="3" placeholder="Tell us about your business" required></textarea>
                             <small class="form-error-message" id="businessDescriptionError"></small>
                         </div>
-
                     </div>
-                    <button type="submit" class="btn btn-primary w-100 mt-3">Sign Up</button>
-            </form>
-        </div>
-    </div>
-</div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="terms"  required>
+
+                        <label class="form-check-label" for="terms">
+                            Agree to the <a href="#">Terms and Conditions</a>
+                        </label>
+                    </div>
+                    
                         <!-- Other fields like business or investor information -->
                         <div class="investor-fields" style="display: none;">
                             <div class="mb-3">
@@ -152,9 +159,17 @@
                                 <textarea class="form-control" id="investmentDetails" rows="3" placeholder="Tell us about your investment preferences" required></textarea>
                                 <small class="form-error-message" id="investmentDetailsError"></small>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100 mt-3">Sign Up</button>
-                        </form>
-                    </div>
+                        </div>
+                            <button type="submit" class="btn btn-primary w-100 my-3">Sign Up</button>
+                            <p class="text-center mt-3">
+                                Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Sign in</a>
+                            </p>
+                        </form>  
+                        <footer class="text-center">
+                            <div class="container mx-10">
+                                <p>CapitalMinded © 2024 | Empowering Small Businesses to Thrive</p>
+                            </div>
+                        </footer>   
                 </div>
             </div>
     <!-- Bootstrap and JS -->
