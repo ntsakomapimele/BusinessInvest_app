@@ -1,0 +1,36 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BidnessVille Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/styles_dash.css' %}">
+</head>
+<body>
+    <!-- Navigation bar at the top with a line -->
+    <div class="navbar">
+        <div class="nav-buttons">
+            <button id="home-btn">Home</button>
+            <button id="mybtn">Make Your Business Grow</button>
+            <button id="invest-btn">Register</button>
+            <button id="mybusiness-btn">My Business</button>
+        </div>
+        <hr class="line">
+    </div>
+    
+    <!-- Main content -->
+    <div class="dashboard">
+        <h1>Empowering Small Businesses</h1>
+        <h1>Welcome to BidnessVille</h1>
+        
+        <!-- Main buttons in the center -->
+        <div class="main-button-container">
+            <button id="register-btn">Invest in Small Business</button>
+            <button id="find-investment-btn">Find Investment</button>
+        </div>
+    </div>
+
+	<script src="{% static 'js/script_dash.js' %}"></script>
+</body>
+</html>

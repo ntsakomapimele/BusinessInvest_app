@@ -1,0 +1,53 @@
+
+
+
+<!-- view_registrations.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Registrations</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Business Registrations</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Business Name</th>
+                    <th>Ownership</th>
+                    <th>Tax Registration Number</th>
+                    <th>Industry</th>
+                    <th>Annual Revenue</th>
+                    <th>Submitted At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for registration in registrations %}
+                <tr>
+                    <td>{{ registration.business_name }}</td>
+                    <td>{{ registration.ownership }}</td>
+                    <td>{{ registration.tax_reg }}</td>
+                    <td>{{ registration.industry }}</td>
+                    <td>{{ registration.annual_revenue }}</td>
+                    <td>{{ registration.submitted_at }}</td>
+                    <td>
+                        <a href="{{ registration.business_plan.url }}">View Business Plan</a><br>
+                        <a href="{{ registration.financial_statements.url }}">View Financial Statements</a><br>
+                        <a href="{{ registration.legal_documents.url }}">View Legal Documents</a><br>
+                        <a href="{{ registration.management_profiles.url }}">View Management Profiles</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7">No registrations found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

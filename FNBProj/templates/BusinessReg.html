@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Registration</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Tabs -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">MyBusiness</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#invest">Invest</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#learn">Learn</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#mybusiness">My Business</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- My Business Section -->
+    <section id="mybusiness" class="container mt-5 mb-5">
+        <h2>My Business Registration</h2>
+        <form id="businessForm" method="post" enctype="multipart/form-data" action="{% url 'register_business' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="businessName">Business Name</label>
+                <input type="text" class="form-control" name="business_name" id="businessName" placeholder="Enter your business name" required>
+            </div>
+            <div class="form-group">
+                <label for="ownership">Ownership and Management</label>
+                <input type="text" class="form-control" name="ownership" id="ownership" placeholder="Enter ownership and management details" required>
+            </div>
+            <div class="form-group">
+                <label for="taxReg">Tax Registration Number</label>
+                <input type="text" class="form-control" name="tax_reg" id="taxReg" placeholder="Enter your tax registration number" required>
+            </div>
+            <div class="form-group">
+                <label for="industry">Business Industry</label>
+                <input type="text" class="form-control" name="industry" id="industry" placeholder="Enter your business industry" required>
+            </div>
+            <div class="form-group">
+                <label for="revenue">Annual Revenue</label>
+                <input type="number" class="form-control" name="annual_revenue" id="revenue" placeholder="Enter your annual revenue" required>
+            </div>
+            <div class="form-group">
+                <label for="productInfo">Business Product/Service Info</label>
+                <textarea class="form-control" name="product_info" id="productInfo" rows="3" placeholder="Enter details about your products or services" required></textarea>
+            </div>
+            <h3>Upload Documents</h3>
+            <div class="form-group">
+                <label for="fileUpload">Business Plan</label>
+                <input type="file" class="form-control-file" name="business_plan" id="fileUpload" accept=".pdf,.docx">
+            </div>
+            <div class="form-group">
+                <label for="fileUpload1">Financial Statements</label>
+                <input type="file" class="form-control-file" name="financial_statements" id="fileUpload1" accept=".pdf,.docx">
+            </div>
+            <div class="form-group">
+                <label for="fileUpload2">Legal Documents</label>
+                <input type="file" class="form-control-file" name="legal_documents" id="fileUpload2" accept=".pdf,.docx">
+            </div>
+            <div class="form-group">
+                <label for="fileUpload3">Management Team Profiles</label>
+                <input type="file" class="form-control-file" name="management_profiles" id="fileUpload3" accept=".pdf,.docx">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Register Business</button>
+        </form>
+    </section>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="{% static 'script4.js' %}"></script>
+</body>
+</html>

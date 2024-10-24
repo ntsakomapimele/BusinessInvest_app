@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="login-container">
-        <h2 class="text-center">Login to CapitalMinded</h2>
+        <h2 class="text-center">Login to BidnessVille</h2>
         <form method="POST" id="loginForm" class="mx-auto">
             {% csrf_token %}
             {{ form.non_field_errors }}
@@ -26,6 +26,11 @@
                 {{ form.password }}
                 <small class="form-error-message" id="loginPasswordError"></small>
             </div>
+            
+            <p class="text-center mt-3">
+                Don't have an account? <a href="register/">Sign up</a>
+            </p>
+            
             <button type="submit" class="btn btn-primary w-100">Login</button>
         </form>
     </div>
