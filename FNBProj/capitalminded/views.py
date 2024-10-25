@@ -69,11 +69,9 @@ def dashboard_view(request):
 
 
 def register_business(request):
-    temp = request.method == 'POST'
-    print(temp)
-    print("passed here")
     if request.method == 'POST':
-        print("passed here +++++++++++++++++++++++++")
+        print("Passed here +++++++++++++++++++++++++")
+        
         # Retrieve form data
         business_name = request.POST.get('business_name')
         ownership = request.POST.get('ownership')
@@ -81,6 +79,7 @@ def register_business(request):
         industry = request.POST.get('industry')
         annual_revenue = request.POST.get('annual_revenue')
         product_info = request.POST.get('product_info')
+        logo = request.FILES.get('logo')
 
         # Handle file uploads
         business_plan = request.FILES.get('business_plan')
@@ -100,11 +99,14 @@ def register_business(request):
             financial_statements=financial_statements,
             legal_documents=legal_documents,
             management_profiles=management_profiles,
+            logo=logo,  # Set logo here
         )
-        registration.save()
+        registration.save()  # Save the registration to the database
 
+        # Direct response after successful registration
         return HttpResponse("Business registration successful.")
 
+    # If GET request, just render the registration form
     return render(request, 'BusinessREG.html')
 
 

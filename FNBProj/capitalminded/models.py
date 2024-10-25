@@ -60,6 +60,7 @@ class BusinessRegistration(models.Model):
     financial_statements = models.FileField(upload_to='financial_statements/')
     legal_documents = models.FileField(upload_to='legal_documents/')
     management_profiles = models.FileField(upload_to='management_profiles/')
+    logo = models.ImageField(upload_to='logos/', blank=True, null=True)
     submitted_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -71,25 +71,30 @@
                 <textarea class="form-control" name="product_info" id="productInfo" rows="3" placeholder="Enter details about your products or services" required></textarea>
             </div>
             <h3>Upload Documents</h3>
-            <div class="form-group">
-                <label for="fileUpload">Business Plan</label>
-                <input type="file" class="form-control-file" name="business_plan" id="fileUpload" accept=".pdf,.docx">
-            </div>
-            <div class="form-group">
-                <label for="fileUpload1">Financial Statements</label>
-                <input type="file" class="form-control-file" name="financial_statements" id="fileUpload1" accept=".pdf,.docx">
-            </div>
-            <div class="form-group">
-                <label for="fileUpload2">Legal Documents</label>
-                <input type="file" class="form-control-file" name="legal_documents" id="fileUpload2" accept=".pdf,.docx">
-            </div>
-            <div class="form-group">
-                <label for="fileUpload3">Management Team Profiles</label>
-                <input type="file" class="form-control-file" name="management_profiles" id="fileUpload3" accept=".pdf,.docx">
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Register Business</button>
-        </form>
-    </section>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="fileUpload">Business Plan</label>
+                    <input type="file" class="form-control-file" name="business_plan" id="fileUpload" accept=".pdf,.docx">
+                </div>
+                <div class="form-group">
+                    <label for="fileUpload1">Financial Statements</label>
+                    <input type="file" class="form-control-file" name="financial_statements" id="fileUpload1" accept=".pdf,.docx">
+                </div>
+                <div class="form-group">
+                    <label for="fileUpload2">Legal Documents</label>
+                    <input type="file" class="form-control-file" name="legal_documents" id="fileUpload2" accept=".pdf,.docx">
+                </div>
+                <div class="form-group">
+                    <label for="fileUpload3">Management Team Profiles</label>
+                    <input type="file" class="form-control-file" name="management_profiles" id="fileUpload3" accept=".pdf,.docx">
+                </div>
+                <div class="form-group">
+                    <label for="fileUpload4">Logo</label> 
+                    <input type="file" class="form-control-file" name="logo" id="fileUpload4" accept=".pdf,.docx,.jpg,.jpeg,.png"> 
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Register Business</button>
+            </form>
 
     <!-- Bootstrap JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.2.min.js"></script>

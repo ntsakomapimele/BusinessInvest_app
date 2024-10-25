@@ -35,10 +35,21 @@
                     <td>{{ registration.annual_revenue }}</td>
                     <td>{{ registration.submitted_at }}</td>
                     <td>
+                        {% if registration.business_plan %}
                         <a href="{{ registration.business_plan.url }}">View Business Plan</a><br>
+                    {% endif %}
+                    {% if registration.financial_statements %}
                         <a href="{{ registration.financial_statements.url }}">View Financial Statements</a><br>
+                    {% endif %}
+                    {% if registration.legal_documents %}
                         <a href="{{ registration.legal_documents.url }}">View Legal Documents</a><br>
+                    {% endif %}
+                    {% if registration.management_profiles %}
                         <a href="{{ registration.management_profiles.url }}">View Management Profiles</a>
+                    {% endif %}
+                    {% if registration.logo %}
+                    <a href="{{ registration.logo.url }}">View Logo</a>
+                {% endif %}
                     </td>
                 </tr>
                 {% empty %}
