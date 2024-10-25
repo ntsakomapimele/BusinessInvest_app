@@ -13,8 +13,13 @@
         <div class="nav-buttons">
             <button id="home-btn">Home</button>
             <button id="mybtn">Make Your Business Grow</button>
+<<<<<<< HEAD
 			<button id="invest-btn" onclick="location.href='{% url 'register_business' %}'">Register</button>            
 			<button id="mybusiness-btn">My Business</button>
+=======
+            <a href="{% url 'register_business' %}"><button id="invest-btn">Register</button></a>
+            <button id="mybusiness-btn">My Business</button>
+>>>>>>> d462d199aec0c2da7f0135d25084d314a5383a1a
         </div>
         <hr class="line">
     </div>
@@ -26,7 +31,7 @@
         
         <!-- Main buttons in the center -->
         <div class="main-button-container">
-            <button id="register-btn">Invest in Small Business</button>
+            <a href="{% url 'view_registrations' %}"><button id="register-btn">Invest in Small Business</button></a>
             <button id="find-investment-btn">Find Investment</button>
         </div>
     </div>
