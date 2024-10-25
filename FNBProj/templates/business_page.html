@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Overview</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .header {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 60px 0;
+            border-radius: 0 0 50px 50px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .panel {
+            border-radius: 15px;
+            margin: 20px 0;
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .panel:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+        .panel-title {
+            font-size: 1.75rem;
+            margin-bottom: 15px;
+            color: #6a11cb;
+        }
+        .card-body {
+            position: relative;
+            padding: 30px;
+            border-radius: 15px;
+        }
+        .icon {
+            font-size: 50px;
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            color: #6a11cb;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .footer {
+            background-color: #6a11cb;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 30px 30px 0 0;
+            margin-top: 20px;
+        }
+        .rounded-circle {
+            border: 3px solid #6a11cb;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="header">
+        <a href="{% url 'investment_overview' business_id=company.id %}">View Investment Overview</a>
+        <h1>Investment Overview</h1>
+        <p class="lead">Explore key insights and financial data for {{ company.business_name }}</p>
+    </div>
+
+    <div class="row">
+        <!-- Company Logo Panel -->
+        <div class="col-md-6">
+            <div class="card panel">
+                <div class="card-body text-center">
+                    <div class="icon"><i class="fas fa-building"></i></div>
+                    <h2 class="panel-title">Company Logo</h2>
+                    {% if company.logo %}
+                        <img src="{{ company.logo.url }}" alt="Company Logo" class="img-fluid mb-3 rounded-circle">
+                    {% else %}
+                        <p>No logo available</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Ownership and Management Roles Panel -->
+        <div class="col-md-6">
+            <div class="card panel">
+                <div class="card-body">
+                    <div class="icon"><i class="fas fa-users"></i></div>
+                    <h2 class="panel-title">Ownership & Management</h2>
+                    <p>{{ company.ownership }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- About Us Panel -->
+        <div class="col-md-6">
+            <div class="card panel">
+                <div class="card-body">
+                    <div class="icon"><i class="fas fa-info-circle"></i></div>
+                    <h2 class="panel-title">Product Information</h2>
+                    <p>{{ company.product_info }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Financial Overview Panel -->
+        <div class="col-md-6">
+            <div class="card panel">
+                <div class="card-body">
+                    <div class="icon"><i class="fas fa-chart-line"></i></div>
+                    <h2 class="panel-title">Financial Overview</h2>
+                    <p><strong>Annual Revenue:</strong> ${{ company.annual_revenue }}</p>
+                    <p><strong>Tax Registration:</strong> {{ company.tax_reg }}</p>
+                    <p><strong>Industry:</strong> {{ company.industry }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Documents Panel -->
+    {% comment %} <div class="row">
+        <div class="col-md-12">
+            <div class="card panel">
+                <div class="card-body">
+                    <h2 class="panel-title">Documents</h2>
+                    {% if company.business_plan %}
+                        <p><a href="{{ company.business_plan.url }}" download>Download Business Plan</a></p>
+                    {% endif %}
+                    {% if company.financial_statements %}
+                        <p><a href="{{ company.financial_statements.url }}" download>Download Financial Statements</a></p>
+                    {% endif %}
+                    {% if company.legal_documents %}
+                        <p><a href="{{ company.legal_documents.url }}" download>Download Legal Documents</a></p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div> {% endcomment %}
+
+    <div class="footer">
+        <p>© 2024 BidnessVille. All Rights Reserved.</p>
+        {% comment %} <p><small>Submitted at: {{ company.submitted_at }}</small></p> {% endcomment %}
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -34,3 +34,6 @@ class BusinessRegistrationAdmin(admin.ModelAdmin):
     list_filter = ('industry', 'submitted_at')
 
 admin.site.register(BusinessRegistration, BusinessRegistrationAdmin)
+class BusinessRegistrationAdmin(admin.ModelAdmin):
+    list_display = ['business_name', 'ownership', 'annual_revenue', 'submitted_at']  # Use 'submitted_at' as a field
+    list_filter = ['ownership', 'submitted_at']

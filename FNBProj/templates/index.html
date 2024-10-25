@@ -3,179 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CapitalMinded - Empowering Small Businesses</title>
-
-    <!-- Load static tag for Django -->
-    {% load static %}
-
-    <!-- Link to Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    
-    <!-- Link to your external CSS using Django static tag -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Investment Overview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .panel {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        img {
+            display: block;
+            margin: 0 auto 10px;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-    <!-- Main Login Page -->
-    <div class="login-container">
-        <h2 class="text-center">Login to CapitalMinded</h2>
-        <form id="loginForm" class="mx-auto">
-            <div class="mb-3">
-                <label for="loginEmail" class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email address" required>
-                <small class="form-error-message" id="loginEmailError"></small>
-            </div>
-            <div class="mb-3">
-                <label for="loginPassword" class="form-label">Password</label>
-                <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required>
-                <small class="form-error-message" id="loginPasswordError"></small>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Login</button>
-            <p class="text-center mt-3">
-                Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Sign up</a>
-            </p>
-        </form>
-        <footer class="text-center">
-            <div class="container">
-                <p>CapitalMinded © 2024 | Empowering Small Businesses to Thrive</p>
-            </div>
-        </footer>
-    </div>
-
-    <!-- Registration Modal -->
-    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-        <div class="modal-dialog" >
-            <div class="modal-content" style="min-width: 500px;">
-                <h2 id="registerModalLabel" class="text-center">Register in CapitalMinded</h2>
-                <form id="registerForm" class="mx-4">
-                    <div class="mb-3" style="display: none;">
-                        <label for="userType" class="form-label">Register As</label>
-                        <select class="form-select" id="userType" required>
-                            <option value="" disabled selected>Select your role</option>
-                            <option value="Business Owner">Business Owner</option>
-                            <option value="Investor">Investor</option>
-                        </select>
-                        <small class="form-error-message" id="userTypeError"></small>
-                    </div>
-                    <div class="mb-3">
-                        <label for="registerEmail" class="form-label">Email Address</label>
-                        <input type="email" class="form-control" id="registerEmail" placeholder="Enter your email address" required>
-                        <small class="form-error-message" id="registerEmailError"></small>
-                    </div>
-                    <div class="mb-3">
-                        <label for="registerPassword" class="form-label">Create Password</label>
-                        <input type="password" class="form-control" id="registerPassword" placeholder="Create a new password" required>
-                        <small class="form-error-message" id="registerPasswordError"></small>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="ConfirmPassword" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="ConfirmPassword" placeholder="Confirm your password" required>
-                        <small class="form-error-message" id="registerPasswordError"></small>
-                    </div>
-
-                    <div class="business-owner-fields" style="display: none;">
-                        <div class="mb-3">
-                            <label for="businessName" class="form-label">Business Name</label>
-                            <input type="text" class="form-control" id="businessName" placeholder="Business name(optional)">
-                            <small class="form-error-message" id="businessNameError"></small>
-                        </div>
-                        <div class="mb-3">
-                            <label for="businessType" class="form-label">Business Type</label>
-                            <select class="form-select" id="businessType" required>
-                                <option value="" disabled selected>Select your business type</option>
-                                <option value="Retail">Retail</option>
-                                <option value="Service">Service</option>
-                                <option value="Manufacturing">Manufacturing</option>
-                                <option value="Technology">Technology</option>
-                                <option value="Health & Wellness">Health & Wellness</option>
-                                <option value="Education">Education</option>
-                                <option value="Construction">Construction</option>
-                                <option value="Hospitality">Hospitality</option>
-                                <option value="Real Estate">Real Estate</option>
-                                <option value="Transportation">Transportation</option>
-                                <option value="Finance">Finance</option>
-                                <option value="Entertainment">Entertainment</option>
-                                <option value="E-commerce">E-commerce</option>
-                                <option value="Consulting">Consulting</option>
-                                <option value="Non-profit">Non-profit</option>
-                                <option value="Beauty">Beauty</option>
-                                <option value="Personal Services">Personal Services</option>
-                                <option value="Arts & Crafts">Arts & Crafts</option>
-                                <option value="Agriculture">Agriculture</option>
-                                <option value="Food & Beverage">Food & Beverage</option>
-                                <option value="Fitness & Sports">Fitness & Sports</option>
-                                <option value="Automotive">Automotive</option>
-                                <option value="IT Services">IT Services</option>
-                            </select>
-                            <small class="form-error-message" id="businessTypeError"></small>
-                        </div>
-                        <div class="mb-3">
-                            <label for="businessDescription" class="form-label">Business Description</label>
-                            <textarea class="form-control" id="businessDescription" rows="3" placeholder="Tell us about your business" required></textarea>
-                            <small class="form-error-message" id="businessDescriptionError"></small>
-                        </div>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="terms"  required>
-
-                        <label class="form-check-label" for="terms">
-                            Agree to the <a href="#">Terms and Conditions</a>
-                        </label>
-                    </div>
-                    
-                        <!-- Other fields like business or investor information -->
-                        <div class="investor-fields" style="display: none;">
-                            <div class="mb-3">
-                                <label for="investmentType" class="form-label">Investment Type</label>
-                                <select class="form-select" id="investmentType" required>
-                                    <option value="" disabled selected>Select your investment type</option>
-                                    <option value="Angel Investor">Angel Investor</option>
-                                    <option value="Venture Capital">Venture Capital</option>
-                                    <option value="Crowdfunding">Crowdfunding</option>
-                                    <option value="Equity Investment">Equity Investment</option>
-                                    <option value="Debt Investment">Debt Investment</option>
-                                    <option value="Real Estate Investment">Real Estate Investment</option>
-                                    <option value="Seed Funding">Seed Funding</option>
-                                    <option value="Private Equity">Private Equity</option>
-                                    <option value="Convertible Note">Convertible Note</option>
-                                    <option value="Government Grants">Government Grants</option>
-                                    <option value="Microfinance">Microfinance</option>
-                                    <option value="Franchise Investment">Franchise Investment</option>
-                                    <option value="Peer-to-Peer Lending">Peer-to-Peer Lending</option>
-                                    <option value="Corporate Venture Capital">Corporate Venture Capital</option>
-                                    <option value="Impact Investing">Impact Investing</option>
-                                    <option value="SBA Loans">SBA Loans</option>
-                                    <option value="Alternative Investments">Alternative Investments</option>
-                                    <option value="Social Enterprise Funding">Social Enterprise Funding</option>
-                                    <option value="Hedge Fund Investment">Hedge Fund Investment</option>
-                                </select>
-                                <small class="form-error-message" id="investmentTypeError"></small>
-                            </div>
-                            <div class="mb-3">
-                                <label for="investmentDetails" class="form-label">Investment Details</label>
-                                <textarea class="form-control" id="investmentDetails" rows="3" placeholder="Tell us about your investment preferences" required></textarea>
-                                <small class="form-error-message" id="investmentDetailsError"></small>
-                            </div>
-                        </div>
-                            <button type="submit" class="btn btn-primary w-100 my-3">Sign Up</button>
-                            <p class="text-center mt-3">
-                                Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Sign in</a>
-                            </p>
-                        </form>  
-                        <footer class="text-center">
-                            <div class="container mx-10">
-                                <p>CapitalMinded © 2024 | Empowering Small Businesses to Thrive</p>
-                            </div>
-                        </footer>   
-                </div>
-            </div>
-    <!-- Bootstrap and JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Link to your external JS using Django static tag -->
-    <script src="{% static 'js/script.js' %}"></script>
+<div class="container">
+    {% for business in businesses %}
+        <div class="panel">
+            <h2>{{ business.business_name }}</h2>
+            <img src="{{ business.logo.url }}" alt="Company Logo">
+            <p><strong>Ownership:</strong> {{ business.ownership }}</p>
+            <p><strong>Tax Registration:</strong> {{ business.tax_reg }}</p>
+            <p><strong>Industry:</strong> {{ business.industry }}</p>
+            <p><strong>Annual Revenue:</strong> ${{ business.annual_revenue }}</p>
+            <p><strong>Product Info:</strong> {{ business.product_info }}</p>
+            <a href="{{ business.business_plan.url }}">Download Business Plan</a><br>
+            <a href="{{ business.financial_statements.url }}">Download Financial Statements</a><br>
+            <a href="{{ business.legal_documents.url }}">Download Legal Documents</a><br>
+            <a href="{{ business.management_profiles.url }}">Download Management Profiles</a>
+        </div>
+    {% endfor %}
+</div>
 </body>
 </html>

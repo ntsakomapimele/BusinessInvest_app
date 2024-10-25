@@ -14,6 +14,6 @@ urlpatterns = [
     # path('BusinessREG', views.business__view, name =  'business'),
     path('BusinessREG/', views.register_business, name='register_business'),
     path('registrations/', views.view_registrations, name='view_registrations'),
-
+    path('business/<int:business_id>/',views.business_overview, name='investment_overview'),
     
 ]
