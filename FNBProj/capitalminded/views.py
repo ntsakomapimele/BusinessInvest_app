@@ -14,36 +14,72 @@ from django.contrib import messages
 from .models import MicroLoan
 from .forms import MicroLoanApplicationForm
 from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
+# views.py
 @login_required
 def apply_for_loan(request, business_id):
     business = get_object_or_404(BusinessRegistration, id=business_id)
     
     if request.method == 'POST':
-        form = MicroLoanApplicationForm(request.POST)
-        if form.is_valid():
-            loan = form.save(commit=False)
-            loan.business = business
-            
-            # Set interest rate based on business criteria
-            annual_revenue = business.annual_revenue
-            if annual_revenue < 50000:
-                loan.interest_rate = 12.5
-            elif annual_revenue < 100000:
-                loan.interest_rate = 10.0
-            else:
-                loan.interest_rate = 8.5
+        try:
+            # Get and clean the amount input
+            amount_str = request.POST.get('amount_requested', '')
+
+            print("loan amount : ", amount_str )
+            term_months_str = request.POST.get('term_months', '')
+            purpose = request.POST.get('purpose', '')
+
+            # Validate amount with better error handling
+            try:
+                if not amount_str:
+                    raise ValueError("Please enter a loan amount")
                 
+                amount = Decimal(amount_str)
+                if amount <= Decimal('0'):
+                    raise ValueError("Loan amount must be greater than zero")
+                if amount > Decimal('100000'):
+                    raise ValueError("Maximum loan amount is $100,000")
+                
+            except InvalidOperation:
+                raise ValueError("Please enter a valid loan amount (numbers only)")
+
+            # Rest of your validation and loan creation code...
+            # Create new loan
+            loan = MicroLoan(
+                business=business,
+                amount_requested=amount,
+                term_months=int(term_months_str),
+                purpose=purpose,
+                interest_rate=Decimal('5.00'),
+                status='PENDING',
+                start_date=timezone.now().date(),
+                remaining_balance=amount
+            )
+            
             loan.save()
             messages.success(request, 'Loan application submitted successfully!')
-            return redirect('loan_status', loan_id=loan.id)
-    else:
-        form = MicroLoanApplicationForm()
-    
-    return render(request, 'loan_application.html', {
-        'form': form,
-        'business': business
-    })
+            return redirect('business_overview', business_id=business_id)
+
+        except ValueError as e:
+            messages.error(request, str(e))
+        except Exception as e:
+            messages.error(request, f'An error occurred: {str(e)}')
+
+        # Return to form with previous values
+        context = {
+            'business': business,
+            'form_data': {
+                'amount': amount_str if 'amount_str' in locals() else '',
+                'term_months': term_months_str if 'term_months_str' in locals() else '',
+                'purpose': purpose if 'purpose' in locals() else '',
+            }
+        }
+        return render(request, 'loan_application.html', context)
+
+    # GET request
+    return render(request, 'loan_application.html', {'business': business})
+
 
 @login_required
 def loan_status(request, loan_id):

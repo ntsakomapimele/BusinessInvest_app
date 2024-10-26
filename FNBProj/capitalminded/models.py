@@ -4,7 +4,7 @@ from django.db import models
 from django.db import models
 from django.contrib.auth.models import User
 from decimal import Decimal
-
+from dateutil.relativedelta import relativedelta
 
     
 class BusinessRegistration(models.Model):
@@ -123,10 +123,10 @@ class MicroLoan(models.Model):
     approval_date = models.DateTimeField(null=True, blank=True)
     monthly_payment = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     start_date = models.DateField(auto_now_add=True)
-    end_date = models.DateField()
-    next_payment_date = models.DateField()
+    end_date = models.DateField( null=True, blank=True)
+    next_payment_date = models.DateField(null=True, blank=True)
     total_payments_made = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    remaining_balance = models.DecimalField(max_digits=10, decimal_places=2)
+    remaining_balance = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     payment_frequency = models.CharField(max_length=20, choices=[
         ('MONTHLY', 'Monthly'),
         ('BI_WEEKLY', 'Bi-Weekly'),
@@ -148,6 +148,18 @@ class MicroLoan(models.Model):
             self.status = 'OVERDUE'
         self.save()
 
+    def calculate_dates(self):
+        # Set start date to today if not set
+        if not self.start_date:
+            self.start_date = timezone.now().date()
+        
+        # Calculate end date based on term_months
+        self.end_date = self.start_date + relativedelta(months=self.term_months)
+        
+        # Set first payment date (e.g., 1 month from start)
+        if not self.next_payment_date:
+            self.next_payment_date = self.start_date + relativedelta(months=1)
+
     def calculate_monthly_payment(self):
         # Convert all numbers to Decimal for consistent calculation
         r = Decimal(str(self.interest_rate)) / Decimal('100') / Decimal('12')  # Monthly interest rate
@@ -166,6 +178,14 @@ class MicroLoan(models.Model):
     def save(self, *args, **kwargs):
         if not self.monthly_payment:
             self.monthly_payment = self.calculate_monthly_payment()
+        
+        # Calculate remaining balance if not set
+        if not self.remaining_balance:
+            self.remaining_balance = self.amount_requested
+            
+        # Calculate dates before saving
+        self.calculate_dates()
+        
         super().save(*args, **kwargs)
 
     def __str__(self):
