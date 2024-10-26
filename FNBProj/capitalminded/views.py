@@ -81,10 +81,24 @@ def apply_for_loan(request, business_id):
     return render(request, 'loan_application.html', {'business': business})
 
 
+# @login_required
+# def loan_status(request, loan_id):
+#     loan = get_object_or_404(MicroLoan, id=loan_id)
+#     return render(request, 'loan_status.html', {'loan': loan})
+
 @login_required
 def loan_status(request, loan_id):
-    loan = get_object_or_404(MicroLoan, id=loan_id)
-    return render(request, 'loan_status.html', {'loan': loan})
+    loan = get_object_or_404(MicroLoan.objects.select_related('business'), id=loan_id)
+    
+    context = {
+        'loan': loan,
+        'payment_schedule': loan.get_payment_schedule(),
+        'total_paid': loan.principal_paid + loan.interest_paid,
+        'progress_percentage': (loan.total_payments_made / loan.total_amount) * 100 if loan.total_amount else 0,
+    }
+    
+    return render(request, 'loan_status.html', context)
+
 
 @login_required
 def my_loans(request, business_id):
@@ -229,7 +243,7 @@ def register_business(request):
             registration.save()
 
             # Redirect to the business overview page using the new registration's ID
-            return redirect(reverse('investment_overview', kwargs={'business_id': registration.id}))
+            return redirect(reverse('business_overview', kwargs={'business_id': registration.id}))
 
         except (ValueError, InvalidOperation):
             # Handle invalid decimal value

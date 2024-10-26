@@ -188,13 +188,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for payment in loan.payments.all %}
+                                    {% for payment in payment_schedule %}
                                     <tr>
                                         <td>{{ payment.due_date|date:"F d, Y" }}</td>
-                                        <td>${{ payment.principal_amount }}</td>
-                                        <td>${{ payment.interest_amount }}</td>
-                                        <td>${{ payment.total_amount }}</td>
-                                        <td>${{ payment.remaining_balance }}</td>
+                                        <td>${{ payment.principal_amount|floatformat:2 }}</td>
+                                        <td>${{ payment.interest_amount|floatformat:2 }}</td>
+                                        <td>${{ payment.total_amount|floatformat:2 }}</td>
+                                        <td>${{ payment.remaining_balance|floatformat:2 }}</td>
                                         <td>
                                             <span class="badge {% if payment.is_paid %}badge-success{% elif payment.is_overdue %}badge-danger{% else %}badge-warning{% endif %}">
                                                 {% if payment.is_paid %}Paid
