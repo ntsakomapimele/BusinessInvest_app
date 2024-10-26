@@ -1,7 +1,9 @@
 # your_app/models.py
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager,  PermissionsMixin
 from django.db import models
- 
+from django.db import models
+from django.contrib.auth.models import User
+from decimal import Decimal
 
 
     
@@ -61,6 +63,7 @@ class CustomUserManager(BaseUserManager):
             raise ValueError('Superuser must have is_superuser=True.')
             
         return self.create_user(email, password, **extra_fields)
+        
 
 # Custom user model
 class CustomUser(AbstractBaseUser, PermissionsMixin):  # Inherit PermissionsMixin
@@ -76,3 +79,69 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):  # Inherit PermissionsMixi
 
     def __str__(self):
         return self.email
+
+
+class BusinessType(models.Model):
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True)
+    description = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+class BusinessResource(models.Model):
+    business_type = models.ForeignKey(BusinessType, related_name='resources', on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    url = models.URLField()
+    description = models.TextField()
+    order = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ['order']
+
+    def __str__(self):
+        return self.title
+
+
+class MicroLoan(models.Model):
+    LOAN_STATUS_CHOICES = [
+        ('PENDING', 'Pending'),
+        ('APPROVED', 'Approved'),
+        ('REJECTED', 'Rejected'),
+        ('ACTIVE', 'Active'),
+        ('PAID', 'Paid'),
+    ]
+
+    business = models.ForeignKey('BusinessRegistration', on_delete=models.CASCADE)
+    amount_requested = models.DecimalField(max_digits=10, decimal_places=2)
+    interest_rate = models.DecimalField(max_digits=5, decimal_places=2)
+    term_months = models.IntegerField()
+    purpose = models.TextField()
+    status = models.CharField(max_length=20, choices=LOAN_STATUS_CHOICES, default='PENDING')
+    application_date = models.DateTimeField(auto_now_add=True)
+    approval_date = models.DateTimeField(null=True, blank=True)
+    monthly_payment = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+
+    def calculate_monthly_payment(self):
+        # Convert all numbers to Decimal for consistent calculation
+        r = Decimal(str(self.interest_rate)) / Decimal('100') / Decimal('12')  # Monthly interest rate
+        n = Decimal(str(self.term_months))  # Convert term_months to Decimal
+        p = Decimal(str(self.amount_requested))
+        
+        # Calculate (1 + r)^n
+        power_term = (Decimal('1') + r) ** n
+        
+        # Calculate monthly payment
+        monthly_payment = p * (r * power_term) / (power_term - Decimal('1'))
+        
+        # Round to 2 decimal places
+        return round(monthly_payment, 2)
+
+    def save(self, *args, **kwargs):
+        if not self.monthly_payment:
+            self.monthly_payment = self.calculate_monthly_payment()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"Loan for {self.business.business_name} - ${self.amount_requested}"

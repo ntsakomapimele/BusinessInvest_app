@@ -1,0 +1,69 @@
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micro-Loan Application</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    {% block content %}
+    <div class="container mt-5">
+        <h2 class="mb-4">Micro-Loan Application</h2>
+        <div class="card shadow">
+            <div class="card-body">
+                <h5 class="card-title mb-4">Business: {{ business.business_name }}</h5>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="amount_requested">Amount Requested ($)</label>
+                        <input type="number" class="form-control" id="amount_requested" name="amount_requested" 
+                               min="100" max="500000" required>
+                        <small class="form-text text-muted">Enter an amount between $100 and $500,000</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="term_months">Loan Term (months)</label>
+                        <select class="form-control" id="term_months" name="term_months" required>
+                            <option value="6">6 months</option>
+                            <option value="12">12 months</option>
+                            <option value="24">24 months</option>
+                            <option value="36">36 months</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="purpose">Purpose of Loan</label>
+                        <textarea class="form-control" id="purpose" name="purpose" rows="4" 
+                                  placeholder="Please describe how you plan to use the loan..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="alert alert-info">
+                            <h6>Interest Rate Information:</h6>
+                            <ul>
+                                <li>Annual Revenue < $50,000: 12.5% interest rate</li>
+                                <li>Annual Revenue $50,000 - $100,000: 10% interest rate</li>
+                                <li>Annual Revenue > $100,000: 8.5% interest rate</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
