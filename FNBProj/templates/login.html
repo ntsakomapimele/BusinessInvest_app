@@ -13,7 +13,7 @@
 <body>
     <div class="login-container">
         <h2 class="text-center">Login to BidnessVille</h2>
-        <form method="POST" id="loginForm" class="mx-auto">
+        <form method="POST" id="loginForm" class="mx-auto" action="{% url 'login' %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">
             {% csrf_token %}
             {{ form.non_field_errors }}
             <div class="mb-3">

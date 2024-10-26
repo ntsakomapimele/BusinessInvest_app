@@ -147,6 +147,59 @@
         </div>
     </div>
 
+    <!-- Add this before or after the loan status section -->
+    <div class="card panel">
+        <div class="card-body">
+            <div class="icon"><i class="fas fa-money-bill-wave"></i></div>
+            <h2 class="panel-title">Loan Summary</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Total Borrowed:</strong> ${{ total_borrowed|floatformat:2 }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Active Loans:</strong> {{ active_loans }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- business_page.html -->
+<!-- Add this after the existing header section -->
+
+<!-- Loan Summary Dashboard -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card panel">
+            <div class="card-body">
+                <h5>Total Borrowed</h5>
+                <h3>${{ loan_stats.total_borrowed|floatformat:2 }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card panel">
+            <div class="card-body">
+                <h5>Active Loans</h5>
+                <h3>{{ loan_stats.active_loans }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card panel">
+            <div class="card-body">
+                <h5>Outstanding Balance</h5>
+                <h3>${{ loan_stats.total_outstanding|floatformat:2 }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card panel">
+            <div class="card-body">
+                <h5>Performance Score</h5>
+                <h3>{{ performance_metrics.avg_performance_score|floatformat:0 }}%</h3>
+            </div>
+        </div>
+    </div>
+</div>
     <!-- Loan Status Section -->
     <div class="loan-status">
         <h2>Current Loans</h2>

@@ -76,13 +76,16 @@ def get_business_resources(request):
 
 
 def login_view(request):
-    print("logged in")
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('dashboard')  # Redirect to home page after login
+            # Get the next parameter or default to dashboard
+            next_url = request.GET.get('next', 'dashboard')
+            return redirect(next_url)
+        else:
+            messages.error(request, 'Invalid username or password.')
     else:
         form = AuthenticationForm()
 
@@ -206,7 +209,108 @@ def view_registrations(request):
 from django.shortcuts import render
 from .models import BusinessRegistration
 
+# views.py
+from django.db.models import Sum, Q
+from django.utils import timezone
+from datetime import timedelta
+
+# capitalminded/views.py
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.db.models import Sum, Avg
+from django.utils import timezone
+from datetime import timedelta
+from decimal import Decimal
+from .models import BusinessRegistration, MicroLoan, LoanPayment
+
+@login_required
 def business_overview(request, business_id):
-    # Replace 'business_id' with the actual identifier you're using
     company = get_object_or_404(BusinessRegistration, id=business_id)
-    return render(request, 'business_page.html', {'company': company})
+    
+    # Get all loans with filters
+    status_filter = request.GET.get('status', 'all')
+    if status_filter != 'all':
+        loans = MicroLoan.objects.filter(business=company, status=status_filter)
+    else:
+        loans = MicroLoan.objects.filter(business=company)
+
+    # Calculate loan statistics
+    loan_stats = {
+        'total_borrowed': loans.aggregate(Sum('amount_requested'))['amount_requested__sum'] or 0,
+        'active_loans': loans.filter(status='ACTIVE').count(),
+        'total_outstanding': loans.filter(status='ACTIVE').aggregate(Sum('remaining_balance'))['remaining_balance__sum'] or 0,
+        'upcoming_payments': loans.filter(
+            status='ACTIVE',
+            next_payment_date__lte=timezone.now().date() + timedelta(days=7)
+        ).order_by('next_payment_date'),
+    }
+
+    # Get payment history
+    payment_history = LoanPayment.objects.filter(
+        loan__business=company
+    ).select_related('loan').order_by('-payment_date')[:10]
+
+    # Calculate overall performance metrics
+    performance_metrics = {
+        'on_time_payment_rate': calculate_on_time_payment_rate(company),
+        'avg_performance_score': calculate_avg_performance_score(company),
+        'total_paid_off_loans': loans.filter(status='PAID').count(),
+    }
+
+    context = {
+        'company': company,
+        'loans': loans,
+        'loan_stats': loan_stats,
+        'payment_history': payment_history,
+        'performance_metrics': performance_metrics,
+        'status_filter': status_filter,
+    }
+    
+    return render(request, 'business_page.html', context)
+
+def calculate_on_time_payment_rate(company):
+    total_payments = LoanPayment.objects.filter(loan__business=company).count()
+    if total_payments == 0:
+        return 100
+    on_time_payments = LoanPayment.objects.filter(
+        loan__business=company,
+        status='COMPLETED',
+        payment_date__lte=models.F('loan__next_payment_date')
+    ).count()
+    return (on_time_payments / total_payments) * 100
+
+def calculate_avg_performance_score(company):
+    loans = MicroLoan.objects.filter(business=company)
+    if not loans.exists():
+        return 100
+    return loans.aggregate(Avg('performance_score'))['performance_score__avg']
+
+@login_required
+def loan_payment_history(request, loan_id):
+    loan = get_object_or_404(MicroLoan, id=loan_id)
+    payments = loan.payments.all().order_by('-payment_date')
+    return render(request, 'loan_payment_history.html', {'loan': loan, 'payments': payments})
+
+@login_required
+def make_loan_payment(request, loan_id):
+    if request.method == 'POST':
+        loan = get_object_or_404(MicroLoan, id=loan_id)
+        amount = Decimal(request.POST.get('amount'))
+        
+        payment = LoanPayment.objects.create(
+            loan=loan,
+            amount=amount,
+            status='COMPLETED'
+        )
+        
+        # Update loan balance
+        loan.remaining_balance -= amount
+        loan.total_payments_made += amount
+        loan.next_payment_date = calculate_next_payment_date(loan)
+        loan.performance_score = loan.calculate_performance_score()
+        loan.update_loan_status()
+        
+        messages.success(request, f'Payment of ${amount} successfully processed')
+        return redirect('loan_status', loan_id=loan_id)
+
+    return render(request, 'make_payment.html', {'loan': loan})

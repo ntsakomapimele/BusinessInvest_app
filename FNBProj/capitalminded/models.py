@@ -122,6 +122,31 @@ class MicroLoan(models.Model):
     application_date = models.DateTimeField(auto_now_add=True)
     approval_date = models.DateTimeField(null=True, blank=True)
     monthly_payment = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    start_date = models.DateField(auto_now_add=True)
+    end_date = models.DateField()
+    next_payment_date = models.DateField()
+    total_payments_made = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    remaining_balance = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_frequency = models.CharField(max_length=20, choices=[
+        ('MONTHLY', 'Monthly'),
+        ('BI_WEEKLY', 'Bi-Weekly'),
+        ('WEEKLY', 'Weekly')
+    ], default='MONTHLY')
+    performance_score = models.IntegerField(default=100)  # 0-100 score
+
+    def calculate_performance_score(self):
+        # Simple algorithm to calculate performance based on payment history
+        on_time_payments = self.payments.filter(status='COMPLETED', 
+                                              payment_date__lte=models.F('loan__next_payment_date')).count()
+        total_payments = self.payments.count() or 1
+        return min(100, int((on_time_payments / total_payments) * 100))
+
+    def update_loan_status(self):
+        if self.remaining_balance <= 0:
+            self.status = 'PAID'
+        elif timezone.now().date() > self.next_payment_date:
+            self.status = 'OVERDUE'
+        self.save()
 
     def calculate_monthly_payment(self):
         # Convert all numbers to Decimal for consistent calculation
@@ -145,3 +170,47 @@ class MicroLoan(models.Model):
 
     def __str__(self):
         return f"Loan for {self.business.business_name} - ${self.amount_requested}"
+
+from django.utils import timezone
+
+class LoanPayment(models.Model):
+    PAYMENT_STATUS_CHOICES = [
+        ('PENDING', 'Pending'),
+        ('COMPLETED', 'Completed'),
+        ('FAILED', 'Failed')
+    ]
+
+    loan = models.ForeignKey(
+        MicroLoan, 
+        on_delete=models.CASCADE, 
+        related_name='payments'
+    )
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_date = models.DateTimeField(default=timezone.now)
+    status = models.CharField(
+        max_length=20, 
+        choices=PAYMENT_STATUS_CHOICES,
+        default='PENDING'
+    )
+    transaction_id = models.CharField(max_length=100, blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-payment_date']
+        verbose_name = 'Loan Payment'
+        verbose_name_plural = 'Loan Payments'
+
+    def __str__(self):
+        return f"Payment of ${self.amount} for Loan {self.loan.id}"
+
+    def save(self, *args, **kwargs):
+        # Update loan status when payment is completed
+        if self.status == 'COMPLETED':
+            self.loan.total_payments_made += self.amount
+            self.loan.remaining_balance -= self.amount
+            self.loan.update_loan_status()
+            self.loan.performance_score = self.loan.calculate_performance_score()
+            self.loan.save()
+        super().save(*args, **kwargs)
