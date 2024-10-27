@@ -15,6 +15,88 @@ from .models import MicroLoan
 from .forms import MicroLoanApplicationForm
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+from django.shortcuts import render, redirect
+from django.contrib.auth.tokens import default_token_generator
+from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.contrib.auth import get_user_model
+from django.http import HttpResponse
+from django.core.mail import BadHeaderError
+from django.db.models import Q
+# Add these imports
+from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
+
+User = get_user_model()
+
+# Your view functions remain the same...
+def password_reset_request(request):
+    if request.method == 'POST':
+        form = PasswordResetForm(request.POST)
+        if form.is_valid():
+            try:
+                # Get email
+                email = form.cleaned_data['email']
+                associated_users = User.objects.filter(Q(email=email))
+                if associated_users.exists():
+                    for user in associated_users:
+                        subject = "Password Reset Requested"
+                        email_template_name = "password_reset_email.html"
+                        c = {
+                            "email": user.email,
+                            'domain': get_current_site(request).domain,
+                            'site_name': 'BidnessVille',
+                            "uid": urlsafe_base64_encode(force_bytes(user.pk)),
+                            "user": user,
+                            'token': default_token_generator.make_token(user),
+                            'protocol': 'https' if request.is_secure() else 'http'
+                        }
+                        email = render_to_string(email_template_name, c)
+                        try:
+                            msg = EmailMessage(subject, email, to=[user.email])
+                            msg.send()
+                        except Exception as e:
+                            # Log the error (in production, use proper logging)
+                            print(f"Error sending email: {e}")
+                            messages.error(request, "Error sending email. Please try again later.")
+                            return render(request, "password_reset.html", {"form": form})
+                        return redirect("password_reset_done")
+                else:
+                    # Return to same page but don't reveal that email doesn't exist
+                    return redirect("password_reset_done")
+            except Exception as e:
+                messages.error(request, "An error occurred. Please try again.")
+                return render(request, "password_reset.html", {"form": form})
+    else:
+        form = PasswordResetForm()
+    return render(request, "password_reset.html", {"form": form})
+
+def password_reset_done(request):
+    return render(request, 'password_reset_done.html')
+
+def password_reset_confirm(request, uidb64, token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    if user is not None and default_token_generator.check_token(user, token):
+        if request.method == 'POST':
+            form = SetPasswordForm(user, request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('password_reset_complete')
+        else:
+            form = SetPasswordForm(user)
+        return render(request, "password_reset_confirm.html", {"form": form})
+    else:
+        return render(request, "password_reset_invalid.html")
+
+def password_reset_complete(request):
+    return render(request, "password_reset_complete.html")
 
 # views.py
 @login_required

@@ -1,44 +1,220 @@
 {% load static %}
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Loans</title>
-    <!-- Bootstrap CSS -->
+    <title>My Loans - BidnessVille</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            padding: 20px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .page-header {
+            text-align: center;
+            margin: 40px 0;
+            color: #6a11cb;
+        }
+
+        .loan-card {
+            border: none;
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: white;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .loan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .loan-card .card-header {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            border-radius: 15px 15px 0 0;
+            padding: 20px;
+        }
+
+        .loan-amount {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .status-badge {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .status-active {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .status-pending {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .status-paid {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-custom {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 15px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        .btn-apply {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 15px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn-apply:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        .loan-details {
+            padding: 20px;
+        }
+
+        .detail-item {
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .detail-value {
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            border-radius: 30px 30px 0 0;
+        }
+    </style>
 </head>
 <body>
-    {% block content %}
-    <div class="container mt-5">
-        <h2 class="mb-4">My Loans</h2>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">BidnessVille</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'dashboard' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Invest</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">My Business</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="page-header">
+            <h1>My Loans</h1>
+            <p class="text-muted">Manage your current loans and applications</p>
+        </div>
+
         <div class="row">
             {% for loan in loans %}
-            <div class="col-md-6 mb-4">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <h5 class="card-title">${{ loan.amount_requested }}</h5>
-                        <p class="card-text">Status: {{ loan.status }}</p>
-                        <p class="card-text">Interest Rate: {{ loan.interest_rate }}%</p>
-                        <p class="card-text">Monthly Payment: ${{ loan.monthly_payment }}</p>
-                        <a href="{% url 'loan_status' loan.id %}" class="btn btn-primary">View Details</a>
+            <div class="col-md-6">
+                <div class="card loan-card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="loan-amount">${{ loan.amount_requested }}</div>
+                            <span class="status-badge status-{{ loan.status|lower }}">{{ loan.status }}</span>
+                        </div>
+                    </div>
+                    <div class="card-body loan-details">
+                        <div class="detail-item">
+                            <i class="fas fa-percentage mr-2"></i>
+                            Interest Rate: <span class="detail-value">{{ loan.interest_rate }}%</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-money-bill-wave mr-2"></i>
+                            Monthly Payment: <span class="detail-value">${{ loan.monthly_payment }}</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            Term: <span class="detail-value">{{ loan.term_months }} months</span>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="{% url 'loan_status' loan.id %}" class="btn btn-custom">
+                                <i class="fas fa-info-circle mr-2"></i>View Details
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             {% empty %}
-            <div class="col-12">
-                <p>No loans found.</p>
+            <div class="col-12 text-center">
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    No loans found. Start by applying for a new loan!
+                </div>
             </div>
             {% endfor %}
         </div>
 
-        <div class="mt-4">
-            <a href="{% url 'apply_loan' business.id %}" class="btn btn-success">Apply for New Loan</a>
+        <div class="text-center mt-5">
+            <a href="{% url 'apply_loan' business.id %}" class=" btn btn-apply">
+                <i class="fas fa-plus-circle mr-2"></i>Apply for New Loan
+            </a>
         </div>
     </div>
-    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="container">
+        <p>&copy; 2024 BidnessVille. All Rights Reserved.</p>
+    </footer>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

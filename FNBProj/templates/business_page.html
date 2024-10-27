@@ -80,11 +80,122 @@
             border-radius: 15px;
             margin-top: 20px;
         }
+
+        .navbar {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        padding: 20px 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Enhanced loan status cards */
+    .loan-status .card {
+        border: none;
+        border-radius: 15px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .loan-status .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .loan-status .card-title {
+        color: #6a11cb;
+        font-weight: bold;
+    }
+
+    .loan-status .btn-info {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        border: none;
+        border-radius: 15px;
+        padding: 8px 20px;
+        transition: all 0.3s;
+    }
+
+    .loan-status .btn-info:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+    }
+
+    /* Status badges */
+    .status-badge {
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+
+    .status-approved {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .status-pending {
+        background-color: #ffc107;
+        color: #000;
+    }
+
+    .status-active {
+        background-color: #17a2b8;
+        color: white;
+    }
+
+    /* Enhanced metrics cards */
+    .metric-card {
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        transition: all 0.3s;
+    }
+
+    .metric-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .metric-card h5 {
+        color: #6a11cb;
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+    }
+
+    .metric-card h3 {
+        color: #2575fc;
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
     </style>
 </head>
 <body>
 
-<div class="container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">BidnessVille</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'dashboard' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Invest</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">My Business</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<div class="container mt-1">
     <div class="header">
         <h1>Business Owner Dashboard</h1>
         <p class="lead">Manage your business: {{ company.business_name }}</p>
@@ -203,16 +314,26 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Loan #{{ loan.id }}</h5>
-                        <p>Amount: ${{ loan.amount_requested }}</p>
-                        <p>Status: {{ loan.status }}</p>
-                        <p>Monthly Payment: ${{ loan.monthly_payment }}</p>
-                        <a href="{% url 'loan_status' loan_id=loan.id %}" class="btn btn-info btn-sm">View Details</a>
+                        <p class="mb-2">Amount: <strong>${{ loan.amount_requested }}</strong></p>
+                        <p class="mb-2">
+                            <span class="status-badge status-{{ loan.status|lower }}">
+                                {{ loan.status }}
+                            </span>
+                        </p>
+                        <p class="mb-3">Monthly Payment: <strong>${{ loan.monthly_payment }}</strong></p>
+                        <div class="text-center">
+                            <a href="{% url 'loan_status' loan_id=loan.id %}" class="btn btn-info">
+                                <i class="fas fa-info-circle mr-2"></i>View Details
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             {% empty %}
             <div class="col-12">
-                <p>No active loans</p>
+                <div class="alert alert-info text-center">
+                    <i class="fas fa-info-circle mr-2"></i>No active loans
+                </div>
             </div>
             {% endfor %}
         </div>
