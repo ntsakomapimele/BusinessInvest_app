@@ -1,3 +1,4 @@
+
 <!-- your_app/templates/login.html -->
 <!DOCTYPE html>
 <html lang="en">
@@ -6,33 +7,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CapitalMinded - Login</title>
     {% load static %}
+    {% load custom_filters %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <div class="login-container">
-        <h2 class="text-center">Login to BidnessVille</h2>
-        <form method="POST" id="loginForm" class="mx-auto" action="{% url 'login' %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}">
+    <div class="card w-50 mt-5 mx-auto">
+  <div class="card-body">
+    <div class="container mt-5 ">
+        <h2 class="text-center mb-5">Login to BidnessVille</h2>
+
+        <hr>
+
+        <form method="POST" id="loginForm" class="mx-auto my-5" action="{% url 'login' %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}" style="max-width: 400px;">
             {% csrf_token %}
             {{ form.non_field_errors }}
             <div class="mb-3">
                 <label for="loginEmail" class="form-label">Email Address</label>
-                {{ form.username }}
-                <small class="form-error-message" id="loginEmailError"></small>
+                {{ form.username|add_class:"form-control" }}  <!-- Add Bootstrap class -->
+                <small class="form-error-message text-danger">{{ form.username.errors }}</small>
             </div>
             <div class="mb-3">
                 <label for="loginPassword" class="form-label">Password</label>
-                {{ form.password }}
-                <small class="form-error-message" id="loginPasswordError"></small>
+                {{ form.password|add_class:"form-control" }}  <!-- Add Bootstrap class -->
+                <small class="form-error-message text-danger">{{ form.password.errors }}</small>
             </div>
-            
+
+            <button type="submit" class="btn btn-primary w-100 mt-3">Login</button>
+
             <p class="text-center mt-3">
-                Don't have an account? <a href="register/">Sign up</a>
+                Don't have an account? <a href="{% url 'register' %}">Sign up</a>
             </p>
-            
-            <button type="submit" class="btn btn-primary w-100">Login</button>
         </form>
     </div>
+  </div>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
