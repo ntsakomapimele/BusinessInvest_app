@@ -1,6 +1,7 @@
 # your_app/forms.py
 from django.contrib.auth import get_user_model
 from django import forms
+from .models import MicroLoan
 
 class CustomUserCreationForm(forms.ModelForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
@@ -25,6 +26,13 @@ class CustomUserCreationForm(forms.ModelForm):
         return user
 
 
+class MicroLoanApplicationForm(forms.ModelForm):
+    class Meta:
+        model = MicroLoan
+        fields = ['amount_requested', 'term_months', 'purpose']
+        widgets = {
+            'purpose': forms.Textarea(attrs={'rows': 4}),
+        }
 
 
 
