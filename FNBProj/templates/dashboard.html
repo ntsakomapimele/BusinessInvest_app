@@ -1,35 +1,392 @@
-{%load static%}
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BidnessVille Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            padding: 20px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center; /* Center the buttons */
+            gap: 200px; /* Equal spacing between all buttons */
+            max-width: 1200px; /* Limit the maximum width */
+            margin: 0 auto; /* Center the container */
+            padding: 0 20px; /* Add some padding on the sides */
+        }
+
+        .nav-buttons button {
+            background-color: white;
+            color: #6a11cb;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 15px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            white-space: nowrap; 
+        }
+
+        .nav-buttons button:hover {
+            transform: translateY(-5px);
+            background-color: #f0f0f0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .register-btn {
+            background-color: #6a11cb !important;
+            color: white !important;
+        }
+
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+                gap: 30px;
+                align-items: center;
+            }
+        }
+
+        .dashboard {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            min-height: calc(100vh - 80px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            color: #6a11cb;
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #2575fc;
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+        }
+
+        .main-button-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .main-button-container button {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-button-container button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #6a11cb;
+            margin: 40px auto;
+            display: block;
+        }
+
+        /* Chatbox button */
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            border-radius: 50%; /* Make it oval */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            z-index: 1000;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .floating-btn i {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-buttons">
+            <button id="home-btn">Home</button>
+            <button id="mybtn">Make Your Business Grow</button>
+            <button id="invest-btn">Register</button>
+            <button id="mybusiness-btn">View Business</button>
+        </div>
+    </div>
+    
+    <div class="dashboard">
+        <div class="container">
+            <div class="header">
+                <h1>Welcome to BidnessVille</h1>
+                <h2>Empowering Small Businesses</h2>
+            </div>
+            
+            <div class="main-button-container">
+                <button id="register-btn">Invest in Small Business</button>
+                <button id="find-investment-btn">Find Investment</button>
+            </div>
+            
+            <img src="logo.jpg" alt="BidnessVille Logo" class="logo">
+        </div>	
+    </div>
+		
+		
+				<button class="floating-btn" onclick="openStoriesPage()">
+					<i class="fas fa-comments"></i>
+				</button>
+
+			<script>
+				function openStoriesPage() {
+					// This function must open the chat.html tab when the chatbox button at the bottom is clicked
+					window.open('chatbox.html', '_blank');
+				}
+			</script>
+			
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html> {% endcomment %}
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BidnessVille Dashboard</title>
-    <link rel="stylesheet" href="{% static 'css/styles_dash.css' %}">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            padding: 20px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center; /* Center the buttons */
+            gap: 200px; /* Equal spacing between all buttons */
+            max-width: 1200px; /* Limit the maximum width */
+            margin: 0 auto; /* Center the container */
+            padding: 0 20px; /* Add some padding on the sides */
+        }
+
+        .nav-buttons button {
+            background-color: white;
+            color: #6a11cb;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 15px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            white-space: nowrap; 
+        }
+
+        .nav-buttons button:hover {
+            transform: translateY(-5px);
+            background-color: #f0f0f0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .register-btn {
+            background-color: #6a11cb !important;
+            color: white !important;
+        }
+
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+                gap: 30px;
+                align-items: center;
+            }
+        }
+
+        .dashboard {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            min-height: calc(100vh - 80px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            color: #6a11cb;
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #2575fc;
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+        }
+
+        .main-button-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .main-button-container button {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-button-container button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #6a11cb;
+            margin: 40px auto;
+            display: block;
+        }
+
+        /* Chatbox button */
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            border-radius: 50%; /* Make it oval */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            z-index: 1000;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .floating-btn i {
+            color: blue;
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation bar at the top with a line -->
     <div class="navbar">
         <div class="nav-buttons">
             <button id="home-btn">Home</button>
-            <button id="mybtn">Make Your Business Grow</button>
-            <a href="{% url 'register_business' %}"><button id="invest-btn">Register</button></a>
-            <a href="{% url 'business_overview' business_id=1 %}"><button id="mybusiness-btn">View Business</button></a>
-            
+            <button id="mybtn" onclick="window.location.href='{% url 'grow_business' %}'">Make Your Business Grow</button>
+            <a href="{% url 'register_business' %}">
+                <button id="invest-btn">Register</button>
+            </a>            
+            <button id="mybusiness-btn">View Business</button>
         </div>
     </div>
     
-    <!-- Main content -->
     <div class="dashboard">
-        <h1>Empowering Small Businesses</h1>
-        <h1>Welcome to BidnessVille</h1>
-        
-        <!-- Main buttons in the center -->
-        <div class="main-button-container">
-            <a href="{% url 'view_registrations' %}"><button id="register-btn">Invest in Small Business</button></a>
-            <button id="find-investment-btn">Find Investment</button>
-        </div>
+        <div class="container">
+            <div class="header">
+                <h1>Welcome to BidnessVille</h1>
+                <h2>Empowering Small Businesses</h2>
+            </div>
+            
+            <div class="main-button-container">
+                <button id="register-btn">Invest in Small Business</button>
+                <button id="find-investment-btn">Find Investment</button>
+            </div>
+            
+            <img src="{% static 'images/logo.jpg' %}" alt="BidnessVille Logo" class="logo">
+        </div>	
     </div>
+    
+    <button class="floating-btn" onclick="openStoriesPage()">
+        <i class="fas fa-comments"></i>
+    </button>
 
+    <script>
+        function openStoriesPage() {
+            window.open('{% url "chatbox" %}', '_blank');
+        }
+    </script>
+
+    <script src="{% static 'js/jquery.slim.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
 </html>

@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Business Type</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .navbar {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    padding: 20px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-buttons button {
+    background-color: white;
+    color: #6a11cb;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-weight: bold;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+}
+
+.nav-buttons button:hover {
+    transform: translateY(-5px);
+    background-color: #f0f0f0;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.register-btn {
+    background-color: #6a11cb !important;
+    color: white !important;
+}
+
+@media (max-width: 768px) {
+    .nav-buttons {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+}
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f6fa;
+}
+
+
+header, main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+    </style>
+</head>
+<body>
+	<div class="navbar">
+    <div class="nav-buttons">
+        <button id="home-btn">Home</button>
+        <button id="mybtn">Make Your Business Grow</button>
+        <button id="mybusiness-btn">View Business</button>
+        <button id="invest-btn" class="register-btn">Register</button>
+    </div>
+</div>
+    <header>
+        <h1>Select Your Type of Business</h1>
+    </header>
+
+    <main>
+        <section class="business-selection">
+            <form id="business-form">
+                <label for="business-type">Choose a business type:</label>
+                <select id="business-type" name="business-type" class="form-control">
+                    <option value="">-- Select a Business Type --</option>
+                    <option value="sole-proprietorship">Sole Proprietorship</option>
+                    <option value="partnership">Partnership</option>
+                    <option value="llc">Limited Liability Company (LLC)</option>
+                    <option value="corporation">Corporation (C-Corp or S-Corp)</option>
+                    <option value="franchise">Franchise</option>
+                    <option value="home-based-business">Home-Based Business</option>
+                    <option value="e-commerce">E-commerce Business</option>
+                    <option value="retail">Brick-and-Mortar Retail</option>
+                    <option value="service-based">Service-Based Business</option>
+                    <option value="freelancing">Freelancing</option>
+                    <option value="consulting">Consulting Business</option>
+                    <option value="dropshipping">Dropshipping Business</option>
+                    <option value="food-truck">Food Truck</option>
+                    <option value="cafe">Café or Coffee Shop</option>
+                    <option value="bakery">Bakery</option>
+                    <option value="boutique">Boutique</option>
+                    <option value="event-planning">Event Planning</option>
+                    <option value ="photography">Photography Business</option>
+                    <option value="pet-care">Pet Grooming or Pet Sitting</option>
+                    <option value="landscaping">Landscaping or Lawn Care</option>
+                    <option value="cleaning">Cleaning Services</option>
+                    <option value="real-estate">Real Estate Agency</option>
+                    <option value="tutoring">Tutoring Services</option>
+                    <option value="fitness">Fitness Trainer or Studio</option>
+                    <option value="salon">Beauty Salon or Barber Shop</option>
+                    <option value="daycare">Daycare or Creche</option>
+                    <option value="it-support">IT Support or Repair Services</option>
+                    <option value="app-development">App Development</option>
+                    <option value="handyman">Handyman Services</option>
+                    <option value="digital-marketing">Digital Marketing Agency</option>
+                    <option value="car-wash">Car Wash</option>
+                    <option value="social-media">Social Media Management</option>
+                    <option value="subscription-box">Subscription Box Service</option>
+                    <option value="personal-chef">Personal Chef or Catering Service</option>
+                    <option value="thrift-store">Vintage or Thrift Store</option>
+                    <option value="yoga-instructor">Yoga or Meditation Instructor</option>
+                    <option value="bnb">Bed and Breakfast (B&B)</option>
+                    <option value="crafts">Crafts or Handmade Products Business</option>
+                    <option value="interior-design">Interior Design</option>
+                    <option value="translation">Translation or Interpretation Services</option>
+                </select>
+                <br><br>
+                <button type="submit" class="btn btn-primary">Show Resources</button>
+            </form>
+			
+		    <div id="resource-container">
+                <!-- Sole Proprietorship Resources -->
+                <div id="sole-proprietorship-resources" class="resource-section">
+                    <h2>Sole Proprietorship Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/choose-business-structure" target="_blank">SBA Guide to Business Structures</a>
+                            <div class="resource-description">Official guidance on setting up a sole proprietorship</div>
+                        </li>
+                        <li>
+                            <a href="https://www.irs.gov/businesses/small-businesses-self-employed" target="_blank">IRS Small Business Resources</a>
+                            <div class="resource-description">Tax information for sole proprietors</div>
+                        </li>
+                        <li>
+                            <a href="https://www.score.org/resource/sole-proprietorship-quick-guide" target="_blank">SCORE Sole Proprietorship Guide</a>
+                            <div class="resource-description">Comprehensive guide to starting and running a sole proprietorship</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Sole Proprietorship</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/b-n4u3HcXpo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/VF8nN3erAIM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/6NrvX3ifofc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/tg_eJ3qVBhw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/1XrzwsCGycM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                </div>
+                
+                <!-- Partnership Resources -->
+                <div id="partnership-resources" class="resource-section">
+                    <h2>Partnership Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/choose-business-structure#section-header-4" target="_blank">SBA Guide to Partnerships</a>
+                            <div class="resource-description">Official guidance on setting up a partnership</div>
+                        </li>
+                        <li>
+                            <a href="https://www.irs.gov/businesses/partnerships" target="_blank">IRS Partnership Information</a>
+                            <div class="resource-description">Tax information for partnerships</div>
+                        </li>
+                        <li>
+                            <a href="https://www.score.org/resource/partnerships" target="_blank">SCORE Partnership Guide</a>
+                            <div class="resource-description">Comprehensive guide to starting and running a partnership</div>
+                        </li>
+                    </ul>
+					
+				
+                    <div class="video-section">
+                        <h2>YouTube Videos for Partnership</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/fG_NBTeNN2s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Wxg678eIRNQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/RY0Bc-I1bAU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/4NqVrn67k5k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/2n7gNIrN--M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                       </div>
+                </div>
+                
+                <!-- LLC Resources -->
+                <div id="llc-resources" class="resource-section">
+                    <h2>LLC Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.llc.com" target="_blank">LLC Formation Services</a>
+                            <div class="resource-description">Online LLC formation and compliance services</div>
+                        </li>
+                        <li>
+                            <a href="https://www.legalzoom.com/business/business-formation/llc-overview.html" target="_blank">LegalZoom LLC Services</a>
+                            <div class="resource-description">Legal services and formation assistance for LLCs</div>
+                        </li>
+                        <li>
+                            <a href="https://www.nolo.com/legal-encyclopedia/llc-basics-30163.html" target="_blank">Nolo's LLC Guide</a>
+                            <div class="resource-description">Legal encyclopedia for LLC formation and management</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+					                      <h2>YouTube Videos for LLC</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/tVaZ_BpV1vc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/u1WGBoIcK3A"title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/gxIN04DdNHc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width=" 560" height="315" src="https://www.youtube.com/embed/JibRkMqhih8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/9RNlz_pmno8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                       </div>
+                </div>
+                
+                <!-- Corporation Resources -->
+                <div id="corporation-resources" class="resource-section">
+                    <h2>Corporation Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/choose-business-structure#section-header-5" target="_blank">SBA Guide to Corporations</a>
+                            <div class="resource-description">Official guidance on setting up a corporation</div>
+                        </li>
+                        <li>
+                            <a href="https://www.irs.gov/businesses/small-businesses-self-employed/corporations" target="_blank">IRS Corporation Information</a>
+                            <div class="resource-description">Tax information for corporations</div>
+                        </li>
+                        <li>
+                            <a href="https://www.score.org/resource/should-my-company-be-c-corp-s-corp-or-llc" target="_blank">SCORE Corporation Guide</a>
+                            <div class="resource-description">Comprehensive guide to choosing between C-Corp, S-Corp, and LLC</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+	                      <h2>YouTube Videos for Corporation</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/wOq2XaxY214" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/N8ntMu196QE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/5cM7zo1V5Jo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/wtMORWO5h9Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/TNYUtmTBr9M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                       </div>
+                </div>
+                
+                <!-- Franchise Resources -->
+                <div id="franchise-resources" class="resource-section">
+                    <h2>Franchise Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.sba.gov/content/franchise-businesses" target="_blank">SBA Franchise Guide</a>
+                            <div class="resource-description">Official guidance on franchising</div>
+                        </li>
+                        <li>
+                            <a href="https://www.franchise.org/" target="_blank">International Franchise Association</a>
+                            <div class="resource-description">Resources and information for franchisees and franchisors</div>
+                        </li>
+                        <li>
+                            <a href="https://www.entrepreneur.com/franchises" target="_blank">Entrepreneur's Franchise Center</a>
+                            <div class="resource-description">Franchise opportunities and resources</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Franchise</h2>
+						                      <iframe width="560" height="315" src="https://www.youtube.com/embed/Kp-0AhgBiDg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/6hgnvpdteZA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/VrQa-CWvgv4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/stbEYg4Z2mw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/4ajmfzj9G1g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                       </div>
+                </div>
+                
+                <!-- Home-Based Business Resources -->
+                <div id="home-based-business-resources" class="resource-section">
+                    <h2>Home-Based Business Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/plan-your-business/run-your-business-from-home" target="_blank">SBA Home-Based Business Guide</a>
+                            <div class="resource-description">Official guidance on running a home-based business</div>
+                        </li>
+                        <li>
+                            <a href="https://www.irs.gov/businesses/small-businesses-self-employed/home-office-deduction" target="_blank">IRS Home Office Deduction</a>
+                            <div class="resource-description">Tax information for home-based businesses</div>
+                        </li>
+                        <li>
+                            <a href="https://www.score.org/resource/how-start-home-based-business" target="_blank">SCORE Home-Based Business Guide</a>
+                            <div class="resource-description">Comprehensive guide to starting a home-based business</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Home-Based Business</h2>
+						                      <iframe width="560" height="315" src="https://www.youtube.com/embed/YplnEkBIk0U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/GRDUJyCqAzM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/G0dzLanYW1E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/o3qNszjzkdQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/hPTqHt3IV08" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      </div>
+                </div>
+                
+
+			                <!-- Brick-and-Mortar Retail Resources -->
+                <div id="retail-resources" class="resource-section">
+                    <h2>Brick-and-Mortar Retail Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.shopify.com/blog/opening-a-retail-store" target="_blank">Shopify's Guide to Opening a Retail Store</a>
+                            <div class="resource-description">Comprehensive guide on starting a retail business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/retail-business" target="_blank">SBA Retail Business Guide</a>
+                            <div class="resource-description">Official guidance on retail business operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Brick-and-Mortar Retail</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/S8p31Sg69RY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/7HgGiCK33ow" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/bLzrKXkqrGM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/zR1lpFFNwOs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/n6ecdYd8T6o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						
+					</div>
+                </div>
+
+                <!-- Service-Based Business Resources -->
+                <div id="service-based-resources" class="resource-section">
+                    <h2>Service-Based Business Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/77416" target="_blank">Entrepreneur's Guide to Service-Based Businesses</a>
+                            <div class="resource-description">Insights on starting a service-based business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/service-business" target="_blank">SBA Service Business Guide</a>
+                            <div class="resource-description">Official guidance on service business operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Service-Based Business</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/EO0qxH8OPjY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/yEslWweipVI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/4H2P1GcdSo0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/watch?v=5Y3WLD4DqVg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/watch?v=0M3cGo3k82c'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					
+					</div>
+                </div>
+
+                <!-- Freelancing Resources -->
+                <div id="freelancing-resources" class="resource-section">
+                    <h2>Freelancing Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.upwork.com/i/freelancing/" target="_blank">Upwork Freelancing Guide</a>
+                            <div class="resource-description">Guide to starting a freelancing career.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.fiverr.com/start-selling" target="_blank">Fiverr's Guide to Freelancing</a>
+                            <div class="resource-description">How to start selling your services as a freelancer.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Freelancing</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/EjTTelvJAyU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/NEbEUAL1K60" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write ; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/dXLlJyb_LHE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write ; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/CDQ-rsgqVBw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write ; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                   
+				   </div>
+                </div>
+
+                <!-- Consulting Business Resources -->
+                <div id="consulting-resources" class="resource-section">
+                    <h2>Consulting Business Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292445" target="_blank">Entrepreneur's Guide to Consulting</a>
+                            <div class="resource-description">Insights on starting a consulting business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/consulting-business" target="_blank">SBA Consulting Business Guide</a>
+                            <div class="resource-description">Official guidance on consulting business operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Consulting Business</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/S9JIDHRS1nA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/e1LZfFbqJWI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/T26F1W7m-jM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/WSyV7gSbKkg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/FTCzCcP-W5M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    
+					</div>
+                </div>
+
+                <!-- Dropshipping Business Resources -->
+                <div id="dropshipping-resources" class="resource-section">
+                    <h2>Dropshipping Business Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.shopify.com/learn/dropshipping" target="_blank">Shopify's Guide to Dropshipping</a>
+                            <div class="resource-description">Comprehensive guide on starting a dropshipping business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.oberlo.com/blog/dropshipping-guide" target="_blank">Oberlo's Dropshipping Guide</a>
+                            <div class="resource-description">Step-by-step guide to starting a dropshipping business.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Dropshipping Business</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/fMt3kv1vc_A'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/wfs7JxKVqtQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/Idrr9kuNSEA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						
+				   </div>
+                </div>
+
+                <!-- Food Truck Resources -->
+                <div id="food-truck-resources" class="resource-section">
+                    <h2>Food Truck Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.foodtruckempire.com/start-a-food-truck-business/" target="_blank">Food Truck Empire's Guide to Starting a Food Truck</a>
+                            <div class="resource-description">Comprehensive guide on starting a food truck business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/food-truck-business" target="_blank">SBA Food Truck Business Guide</a>
+                            <div class="resource-description">Official guidance on food truck business operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Food Truck</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/ZBzNeRZu2X8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Pq-UcFTQe0M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/fZo4V9A9U9Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/LHJpZI7md9A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    
+					</div>
+                </div>
+
+                <!-- Café or Coffee Shop Resources -->
+                <div id="cafe-resources" class="resource-section">
+                    <h2>Café or Coffee Shop Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com /article/292446" target="_blank">Entrepreneur's Guide to Starting a Café or Coffee Shop</a>
+                            <div class="resource-description">Insights on starting a café or coffee shop business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/cafe-or-coffee-shop" target="_blank">SBA Café or Coffee Shop Guide</a>
+                            <div class="resource-description">Official guidance on café or coffee shop business operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Café or Coffee Shop</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/X-wg4mOiCCo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/mDS9YzDn6fM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/rLaVDQy0q8Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/REPBLo_dAPM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    
+					</div>
+                </div>
+
+                <!-- Bakery Resources -->
+                <div id="bakery-resources" class="resource-section">
+                    <h2>Bakery Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292447" target="_blank">Entrepreneur's Guide to Starting a Bakery</a>
+                            <div class="resource-description">Insights on starting a bakery business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/bakery" target="_blank">SBA Bakery Guide</a>
+                            <div class="resource-description">Official guidance on bakery business operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Bakery</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/6nDOzoKg2fw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/7Qowa7Fd01w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/ctYZHlYeG_4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/zB1jdmXJ2iM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						
+					</div>
+                </div>
+
+                <!-- Boutique Resources -->
+                <div id="boutique-resources" class="resource-section">
+                    <h2>Boutique Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292448" target="_blank">Entrepreneur's Guide to Starting a Boutique</a>
+                            <div class="resource-description">Insights on starting a boutique business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/boutique" target="_blank">SBA Boutique Guide</a>
+                            <div class="resource-description">Official guidance on boutique business operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Boutique</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/6xjHyeYgZB0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/arxpNcdyru4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/148GiLHQA1Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Z_9ojPDzZM0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/SuZsJPflPgg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        
+					</div>
+                </div>
+
+                <!-- Event Planning Resources -->
+                <div id="event-planning-resources" class="resource-section">
+                    <h2>Event Planning Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292449" target="_blank">Entrepreneur's Guide to Starting an Event Planning Business</a>
+                            <div class="resource-description">Insights on starting an event planning business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/event-planning" target="_blank">SBA Event Planning Guide</a>
+                            <div class="resource-description ">Official guidance on event planning business operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Event Planning</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/OHyX6XYvYAg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/VE-mj0_uFHY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/XlrgmjM4UAc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/6v18uaoyeHw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						
+					</div>
+                </div>
+
+                <!-- Photography Business Resources -->
+                <div id="photography-resources" class="resource-section">
+                    <h2>Photography Business Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292450" target="_blank">Entrepreneur's Guide to Starting a Photography Business</a>
+                            <div class="resource-description">Insights on starting a photography business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/photography" target="_blank">SBA Photography Guide</a>
+                            <div class="resource-description">Official guidance on photography business operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Photography Business</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/-_YVlgxSTnw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/IN9TrYcnuhc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/BHGczxpIAgE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/xZ5XCn-uifE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                   
+					</div>
+                </div>
+
+                <!-- Pet Grooming or Pet Sitting Resources -->
+                <div id="pet-care-resources" class="resource-section">
+                    <h2>Pet Grooming or Pet Sitting Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292451" target="_blank">Entrepreneur's Guide to Starting a Pet Grooming or Pet Sitting Business</a>
+                            <div class="resource-description">Insights on starting a pet grooming or pet sitting business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/pet-grooming-or-pet-sitting" target="_blank">SBA Pet Grooming or Pet Sitting Guide</a>
+                            <div class="resource-description">Official guidance on pet grooming or pet sitting business operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Pet Grooming or Pet Sitting</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/INoLfpErTsg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/IcNcdLsbxRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/PMlOR7yeug0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/9wQQ_ErMu8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    
+					</div>
+                </div>
+
+                <!-- Landscaping or Lawn Care Resources -->
+                <div id="landscaping-resources" class="resource-section">
+                    <h2>Landscaping or Lawn Care Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292452" target="_blank">Entrepreneur's Guide to Starting a Landscaping or Lawn Care Business</a>
+                            <div class="resource-description">Insights on starting a landscaping or lawn care business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/landscaping-or-lawn-care" target="_blank">SBA Landscaping or Lawn Care Guide</a>
+                            <div class="resource-description">Official guidance on landscaping or lawn care business operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+					<h2>YouTube Videos for Landscaping or Lawn Care</h2>
+                       <iframe width="560" height="315" src="https://www.youtube.com/embed/KQjDV3OsCuE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/9HwEN2uQlxM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/dAlunh3TFmU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/UsMbf7jEexY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Cleaning Services Resources -->
+                <div id="cleaning-resources" class="resource-section">
+                    <h2>Cleaning Services Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292453" target="_blank">Entrepreneur's Guide to Starting a Cleaning Services Business</a>
+                            <div class="resource-description">Insights on starting a cleaning services business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/cleaning-services" target="_blank">SBA Cleaning Services Guide</a>
+                            <div class="resource-description">Official guidance on cleaning services business operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Cleaning Services</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Ad7mZ16ACB0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/QebPULmiFNc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/BqvOmi_mgao" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/ikdk3og-g0U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    
+					</div>
+                </div>
+
+                <!-- Real Estate Agency Resources -->
+                <div id="real-estate-resources" class="resource-section">
+                    <h2>Real Estate Agency Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292454" target="_blank">Entrepreneur's Guide to Starting a Real Estate Agency</a>
+                            <div class="resource-description">Insights on starting a real estate agency business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/real-estate-agency" target="_blank">SBA Real Estate Agency Guide</a>
+                            <div class="resource-description">Official guidance on real estate agency business operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Real Estate Agency</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/77p0V1aG2Tk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/rsPAAGL5G60" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						 <iframe width="560" height="315" src="https://www.youtube.com/embed/k1txx3cc9lg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/UJv9-F7SN5A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    
+					</div>
+                </div>				<!-- Real Estate Agency Resources -->
+				<div id="real-estate-resources" class="resource-section">
+					<h2>Real Estate Agency Resources</h2>
+					<ul>
+						<li>
+							<a href="https://www.nar.realtor/" target="_blank">National Association of Realtors</a>
+							<div class="resource-description">Industry association for real estate professionals</div>
+						</li>
+						<li>
+							<a href="https://www.realtor.com/advice/" target="_blank">Realtor.com Advice</a>
+							<div class="resource-description">Tips and insights for real estate agents</div>
+						</li>
+						<li>
+							<a href="https://www.inman.com/" target="_blank">Inman</a>
+							<div class="resource-description">News and trends in the real estate industry</div>
+						</li>
+					</ul>
+				</div>
+
+				                <!-- Tutoring Services Resources -->
+                <div id="tutoring-resources" class="resource-section">
+                    <h2>Tutoring Services Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292455" target="_blank">Entrepreneur's Guide to Starting a Tutoring Business</a>
+                            <div class="resource-description">Insights on starting a tutoring business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/tutoring-services" target="_blank">SBA Tutoring Services Guide</a>
+                            <div class="resource-description">Official guidance on tutoring business operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Tutoring Services</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/J667w0KE9wU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/2lGypxG2U3Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/qVJKPR5TXo4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/iVc819I7voc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/XgRfuWa1b98" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                   
+				   </div>
+                </div>
+
+                <!-- Fitness Trainer or Studio Resources -->
+                <div id="fitness-resources" class="resource-section">
+                    <h2>Fitness Trainer or Studio Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292456" target="_blank">Entrepreneur's Guide to Starting a Fitness Studio</a>
+                            <div class="resource-description">Insights on starting a fitness studio or training business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/fitness-studio" target="_blank">SBA Fitness Studio Guide</a>
+                            <div class="resource-description">Official guidance on fitness studio operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Fitness Trainer or Studio</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/l3IvehgXvw4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/aR29GnRV6xg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/vdEPl0QuSJs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/MP8CdF7kuJ4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    
+					</div>
+                </div>
+
+                <!-- Beauty Salon or Barber Shop Resources -->
+                <div id="salon-resources" class="resource-section">
+                    <h2>Beauty Salon or Barber Shop Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292457" target="_blank">Entrepreneur's Guide to Starting a Beauty Salon</a>
+                            <div class="resource-description">Insights on starting a beauty salon or barber shop.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/beauty-salon" target="_blank">SBA Beauty Salon Guide</a>
+                            <div class="resource-description">Official guidance on salon operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Beauty Salon or Barber Shop</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/3E0bsPmzw8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/esHfP-ltB5M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/m28AFD9UjcU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/gslUYL-a7TI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                   
+					</div>
+                </div>
+
+                <!-- Daycare or Creche Resources -->
+                <div id="daycare-resources" class="resource-section">
+                    <h2>Daycare or Creche Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292458" target="_blank">Entrepreneur's Guide to Starting a Daycare</a>
+                            <div class="resource-description">Insights on starting a daycare or creche business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/daycare" target="_blank">SBA Daycare Guide</a>
+                            <div class="resource-description">Official guidance on daycare operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Daycare or Creche</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/6um1znVbFsc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/51bZbG9gSHM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/QPBqlOwlixA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/IorJyFpXF7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						
+				   </div>
+                </div>
+
+                <!-- IT Support or Repair Services Resources -->
+                <div id="it-support-resources" class="resource-section">
+                    <h2>IT Support or Repair Services Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292459" target="_blank">Entrepreneur's Guide to Starting an IT Support Business</a>
+                            <div class="resource-description">Insights on starting an IT support or repair services business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/it-support" target="_blank">SBA IT Support Guide</a>
+                            <div class="resource-description">Official guidance on IT support operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for IT Support or Repair Services</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/rNmzsCBdKnE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/JyjpCROrS9I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						 <iframe width="560" height="315" src="https://www.youtube.com/embed/XctwgM5jvpk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                       
+					</div>
+                </div>
+
+                <!-- App Development Resources -->
+                <div id="app-development-resources" class="resource-section">
+                    <h2>App Development Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292460" target="_blank">Entrepreneur's Guide to Starting an App Development Business</a>
+                            <div class="resource-description">Insights on starting an app development business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/app-development" target="_blank">SBA App Development Guide</a>
+                            <div class="resource-description">Official guidance on app development operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for App Development</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/21HmrIJ1TWo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/EV_TWcrar0c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						
+					</div>
+                </div>
+
+                <!-- Handyman Services Resources -->
+                <div id="handyman-resources" class="resource-section">
+		<h2>Handyman Services Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292461" target="_blank">Entrepreneur's Guide to Starting a Handyman Business</a>
+                            <div class="resource-description">Insights on starting a handyman services business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/handyman" target="_blank">SBA Handyman Guide</a>
+                            <div class="resource-description">Official guidance on handyman operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Handyman Services</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/t5oEB0vDPqM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/_ruM1lF5XLE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/1i3CRDOT050" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/ceDpcNeYRc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						
+					</div>
+                </div>
+
+                <!-- Digital Marketing Agency Resources -->
+                <div id="digital-marketing-resources" class="resource-section">
+                    <h2>Digital Marketing Agency Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292462" target="_blank">Entrepreneur's Guide to Starting a Digital Marketing Agency</a>
+                            <div class="resource-description">Insights on starting a digital marketing agency business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/digital-marketing" target="_blank">SBA Digital Marketing Guide</a>
+                            <div class="resource-description">Official guidance on digital marketing agency operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Digital Marketing Agency</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/bixR-KIJKYM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/EZ9234g-l7Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						 <iframe width="560" height="315" src="https://www.youtube.com/embed/XW_rIF6WURs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                       
+				   </div>
+                </div>
+
+                <!-- Car Wash Resources -->
+                <div id="car-wash-resources" class="resource-section">
+                    < h 2>Car Wash Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292463" target="_blank">Entrepreneur's Guide to Starting a Car Wash Business</a>
+                            <div class="resource-description">Insights on starting a car wash business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/car-wash" target="_blank">SBA Car Wash Guide</a>
+                            <div class="resource-description">Official guidance on car wash operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Car Wash</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/KJ2yn630LzU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/DM2eelisEt4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						 <iframe width="560" height="315" src="https://www.youtube.com/embed/B2zBMNTz54s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						
+				  </div>
+                </div>
+
+                <!-- Social Media Management Resources -->
+                <div id="social-media-resources" class="resource-section">
+                    <h2>Social Media Management Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292464" target="_blank">Entrepreneur's Guide to Starting a Social Media Management Business</a>
+                            <div class="resource-description">Insights on starting a social media management business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/social-media-management" target="_blank">SBA Social Media Management Guide</a>
+                            <div class="resource-description">Official guidance on social media management operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Social Media Management</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/y-n1RUbYq6Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/fOGvn-bkHJI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/kcim9Pl4DcU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/kXtZ_vyGtQI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						
+					</div>
+                </div>
+
+                <!-- Subscription Box Service Resources -->
+                <div id="subscription-box-resources" class="resource-section">
+                    <h2>Subscription Box Service Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292465" target="_blank">Entrepreneur's Guide to Starting a Subscription Box Service</a>
+                            <div class="resource-description">Insights on starting a subscription box service business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/subscription-box" target="_blank">SBA Subscription Box Guide</a>
+                            <div class="resource-description">Official guidance on subscription box operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Subscription Box Service</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/b_1QM4Dyy7w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/GkpTLzx6fNs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/kFU9gp8CXWk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/NFzN6UWbL_U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/hYG0tuYuzKU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        
+					</div>
+                </div>
+
+                <!-- Personal Chef or Catering Service Resources -->
+                <div id="personal-chef-resources" class="resource-section">
+                    <h2>Personal Chef or Catering Service Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292466" target="_blank">Entrepreneur's Guide to Starting a Personal Chef or Catering Business</a>
+                            <div class="resource-description">Insights on starting a personal chef or catering service business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/personal-chef" target="_blank">SBA Personal Chef Guide</a>
+                            <div class="resource-description">Official guidance on personal chef operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Personal Chef or Catering Service</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/nwcalWmsIvU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/T6td03Sexks" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						 <iframe width="560" height="315" src="https://www.youtube.com/embed/KWHlSmSvpOM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/S5MG3p_4bM0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						 <iframe width="560" height="315" src="https://www.youtube.com/embed/lEmraySSvMw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    
+					</div>
+                </div>
+
+                <!-- Vintage or Thrift Store Resources -->
+                <div id="thrift-store-resources" class="resource-section">
+                    <h2>Vintage or Thrift Store Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292467" target="_blank">Entrepreneur's Guide to Starting a Vintage or Thrift Store</a>
+                            <div class="resource-description">Insights on starting a vintage or thrift store business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/vintage-thrift-store" target="_blank">SBA Vintage or Thrift Store Guide</a>
+                            <div class="resource-description">Official guidance on vintage or thrift store operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Vintage or Thrift Store</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/n3riVsLiG_A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/vVhtWiQZCR0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						
+					</div>
+                </div>
+
+                <!-- Yoga or Meditation Instructor Resources -->
+                <div id="yoga-instructor-resources" class="resource-section">
+                    <h2>Yoga or Meditation Instructor Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292468" target="_blank">Entrepreneur's Guide to Starting a Yoga or Meditation Business</a>
+                            <div class="resource-description">Insights on starting a yoga or meditation instructor business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/yoga-meditation" target="_blank">SBA Yoga or Meditation Guide</a>
+                            <div class="resource-description">Official guidance on yoga or meditation operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Yoga or Meditation Instructor</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/GL-4N6QWmAs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/iOIoHup1lf8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/jg98lY2anl0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/8ZMRlB8wMI0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    
+					</div>
+                </div>
+
+                <!-- Bed and Breakfast (B&B) Resources -->
+                <div id="bnb-resources" class="resource-section">
+                    <h2>Bed and Breakfast (B&B) Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292469" target="_blank">Entrepreneur's Guide to Starting a Bed and Breakfast (B&B)</a>
+                            <div class="resource-description">Insights on starting a bed and breakfast (B&B) business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/bed -breakfast" target="_blank">SBA Bed and Breakfast (B&B) Guide</a>
+                            <div class="resource-description">Official guidance on bed and breakfast (B&B) operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Bed and Breakfast (B&B)</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/b1xV9KNcaHU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/EPR4yg_J0uo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/ihVrlxJeGcA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/UXaHMu5xFes" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/8nsFVnsqBKA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                   
+				   </div>
+                </div>
+			<!-- Crafts or Handmade Products Business Resources -->
+		<div id="crafts-resources" class="resource-section">
+			<h2>Crafts or Handmade Products Business Resources</h2>
+			<ul>
+				<li>
+					<a href="https://www.etsy.com/seller-handbook" target="_blank">Etsy Seller Handbook</a>
+					<div class="resource-description">Comprehensive guide for selling handmade products online</div>
+				</li>
+				<li>
+					<a href="https://www.craftsindustryalliance.org/" target="_blank">Craft Industry Alliance</a>
+					<div class="resource-description">Trade association for craft industry professionals</div>
+				</li>
+				<li>
+					<a href="https://www.handmadeology.com/" target="_blank">Handmadeology</a>
+					<div class="resource-description">Marketing and business tips for handmade sellers</div>
+				</li>
+				<li>
+					<a href="https://www.thesprucecrafts.com/" target="_blank">The Spruce Crafts</a>
+					<div class="resource-description">DIY craft tutorials and business advice</div>
+				</li>
+				<li>
+					<a href="https://www.creativehive.com/" target="_blank">Creative Hive</a>
+					<div class="resource-description">Community and resources for creative entrepreneurs</div>
+				</li>
+			</ul>
+		</div>
+			
+					
+			                <!-- Crafts or Handmade Products Business Resources -->
+                <div id="crafts-resources" class="resource-section">
+                    <h2>Crafts or Handmade Products Business Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292470" target="_blank">Entrepreneur's Guide to Starting a Crafts Business</a>
+                            <div class="resource-description">Insights on starting a crafts or handmade products business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/crafts" target="_blank">SBA Crafts Business Guide</a>
+                            <div class="resource-description">Official guidance on crafts business operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Crafts or Handmade Products Business</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Q2oamlFoqcM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/cJ61qnMgX4c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/OlDTVNro_50" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/kgk_azqCqrM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    
+					</div>
+                </div>
+
+                <!-- Interior Design Resources -->
+                <div id="interior-design-resources" class="resource-section">
+                    <h2>Interior Design Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292471" target="_blank">Entrepreneur's Guide to Starting an Interior Design Business</a>
+                            <div class="resource-description">Insights on starting an interior design business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/interior-design" target="_blank">SBA Interior Design Guide</a>
+                            <div class="resource-description">Official guidance on interior design business operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Interior Design</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/CdCOGnxYLl4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Om1BV9mISwo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/gqUj3_N4hbA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/1uKtyUR-ulE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                   
+					</div>
+                </div>
+
+                <!-- Translation or Interpretation Services Resources -->
+                <div id="translation-resources" class="resource-section">
+                    <h2>Translation or Interpretation Services Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.entrepreneur.com/article/292472" target="_blank">Entrepreneur's Guide to Starting a Translation Business</a>
+                            <div class="resource-description">Insights on starting a translation or interpretation services business.</div>
+                        </li>
+                        <li>
+                            <a href="https://www.sba.gov/business-guide/launch-your-business/translation" target="_blank">SBA Translation Services Guide</a>
+                            <div class="resource-description">Official guidance on translation and interpretation business operations.</div>
+                        </li>
+                    </ul>
+                    <div class="video-section">
+                        <h2>YouTube Videos for Translation or Interpretation Services</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/H8lgosXnTto" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/q72QswIdteQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/y5rmhQbDcUw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/sCw9KGagivI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                   
+				   </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('business-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Hide all resource sections first
+            const allResources = document.querySelectorAll('.resource-section');
+            allResources.forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Show selected business type resources
+            const selectedBusiness = document.getElementById('business-type').value;
+            if (selectedBusiness) {
+                const resourceSection = document.getElementById(selectedBusiness + '-resources');
+                if (resourceSection) {
+                    resourceSection.style.display = 'block';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

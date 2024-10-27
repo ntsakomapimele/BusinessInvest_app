@@ -1,0 +1,424 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BidnessVille Stories</title>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BidnessVille Stories</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            border-radius: 0 0 50px 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 20px 0;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: bold;
+        }
+
+        .content-wrapper {
+            margin-top: 30px;
+        }
+
+        .post-creation {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .post-creation:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .post-creation h5 {
+            color: #6a11cb;
+            font-size: 1.75rem;
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            resize: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            transition: transform 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+        }
+
+        .posts-feed {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .post {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .post:hover {
+            transform: translateY(-5px);
+        }
+
+        .comments-section {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .bi {
+            font-size: 1.5rem;
+            color: #6a11cb;
+            transition: color 0.3s;
+        }
+
+        .bi:hover {
+            color: #2575fc;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+            border-radius: 20px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #5810b0, #1e60d0);
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Use BidnessVille to Share Tips and Ideas to Grow Your Business</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link nav-button" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-button" href="#">Make Your Business Grow</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-button" href="#">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-button" href="#">View Business</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <!-- Main Content Wrapper -->
+    <div class="container content-wrapper">
+        <!-- Post Creation Section (Fixed) -->
+        <div class="post-creation">
+            <h5>Create a Post</h5>
+            <textarea id="postContent" rows="7" placeholder="Share your business success story..."></textarea>
+            <button class="btn btn-primary mt-2" onclick="createPost()">Post</button>
+			
+					<a href="#" onclick="shareOnWhatsApp()" target="blank" title="Share on WhatsApp" class="me-2">
+						<i class="bi bi-whatsapp"></i>
+					</a>
+					<a href="#" onclick="shareOnFacebook()" target="blank" title="Share on Facebook" class="me-2">
+						<i class="bi bi-facebook"></i>
+					</a>
+					<button class="btn btn-secondary btn-sm" title="Copy URL" onclick="copyURL()">
+						<i class="bi bi-link-45deg"></i> Copy URL
+					</button>
+        </div>
+
+        <!-- Posts Feed (Scrollable) -->
+        <div id="postsFeed" class="posts-feed">
+            <!-- Example Post -->
+            
+
+             </div>
+                <div class="comments-section mt-3" style="display: none;">
+                    <textarea class="form-control mb-2 comment-input" placeholder="Write a comment..."></textarea>
+                    <button class="btn btn-primary btn-sm" onclick="postComment(this)">Post Comment</button>
+                    <ul class="list-unstyled mt-2 comments-list"></ul>
+					
+                </div>
+				
+            </div>
+        </div>
+    </div>
+
+    <script src="chatbox.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function copyURL() {
+            const url = window.location.href; // Get the current URL
+            navigator.clipboard.writeText(url).then(() => {
+                alert('URL copied to clipboard!'); // Notify the user
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html> {% endcomment %}
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BidnessVille Stories</title>
+    {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-icons.min.css' %}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            border-radius: 0 0 50px 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 20px 0;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: bold;
+        }
+
+        .content-wrapper {
+            margin-top: 30px;
+        }
+
+        .post-creation {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .post-creation:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .post-creation h5 {
+            color: #6a11cb;
+            font-size: 1.75rem;
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            resize: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            transition: transform 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+        }
+
+        .posts-feed {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .post {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .post:hover {
+            transform: translateY(-5px);
+        }
+
+        .comments-section {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .bi {
+            font-size: 1.5rem;
+            color: #6a11cb;
+            transition: color 0.3s;
+        }
+
+        .bi:hover {
+            color: #2575fc;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+            border-radius: 20px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #5810b0, #1e60d0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Use BidnessVille to Share Tips and Ideas to Grow Your Business</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link nav-button" href="{% url 'dashboard' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-button" href="#">Make Your Business Grow</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-button" href="#">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-button" href="#">View Business</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <div class="container content-wrapper">
+        <!-- Post Creation Section -->
+        <div class="post-creation">
+            <h5>Create a Post</h5>
+            <textarea id="postContent" rows="7" placeholder="Share your business success story..."></textarea>
+            <button class="btn btn-primary mt-2" onclick="createPost()">Post</button>
+            
+            <a href="#" onclick="shareOnWhatsApp()" target="blank" title="Share on WhatsApp" class="me-2">
+                <i class="bi bi-whatsapp"></i>
+            </a>
+            <a href="#" onclick="shareOnFacebook()" target="blank" title="Share on Facebook" class="me-2">
+                <i class="bi bi-facebook"></i>
+            </a>
+            <button class="btn btn-secondary btn-sm" title="Copy URL" onclick="copyURL()">
+                <i class="bi bi-link-45deg"></i> Copy URL
+            </button>
+        </div>
+
+        <!-- Posts Feed (Scrollable) -->
+        <div id="postsFeed" class="posts-feed">
+            <!-- Dynamic Posts Will Go Here -->
+        </div>
+    </div>
+
+    <script src="{% static 'js/chatbox.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script>
+        function copyURL() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('URL copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

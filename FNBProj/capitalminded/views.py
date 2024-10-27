@@ -163,10 +163,7 @@ def apply_for_loan(request, business_id):
     return render(request, 'loan_application.html', {'business': business})
 
 
-# @login_required
-# def loan_status(request, loan_id):
-#     loan = get_object_or_404(MicroLoan, id=loan_id)
-#     return render(request, 'loan_status.html', {'loan': loan})
+
 
 @login_required
 def loan_status(request, loan_id):
@@ -189,7 +186,7 @@ def my_loans(request, business_id):
     return render(request, 'my_loans.html', {'loans': loans, 'business': business})
 
 
-def business_type_list(request):
+def business_type_view(request):
     business_types = BusinessType.objects.all()
     return render(request, 'business_selector.html', {'business_types': business_types})
 
@@ -237,51 +234,7 @@ def register_view(request):
 def dashboard_view(request): 
     return render(request, 'dashboard.html')
 
-# def business__view(request): 
-#     return render(request, 'BusinessReg.html')
 
-
-
-# def register_business(request):
-#     if request.method == 'POST':
-#         print("Passed here +++++++++++++++++++++++++")
-        
-#         # Retrieve form data
-#         business_name = request.POST.get('business_name')
-#         ownership = request.POST.get('ownership')
-#         tax_reg = request.POST.get('tax_reg')
-#         industry = request.POST.get('industry')
-#         annual_revenue = request.POST.get('annual_revenue')
-#         product_info = request.POST.get('product_info')
-#         logo = request.FILES.get('logo')
-
-#         # Handle file uploads
-#         business_plan = request.FILES.get('business_plan')
-#         financial_statements = request.FILES.get('financial_statements')
-#         legal_documents = request.FILES.get('legal_documents')
-#         management_profiles = request.FILES.get('management_profiles')
-
-#         # Create and save a new BusinessRegistration instance
-#         registration = models.BusinessRegistration(
-#             business_name=business_name,
-#             ownership=ownership,
-#             tax_reg=tax_reg,
-#             industry=industry,
-#             annual_revenue=annual_revenue,
-#             product_info=product_info,
-#             business_plan=business_plan,
-#             financial_statements=financial_statements,
-#             legal_documents=legal_documents,
-#             management_profiles=management_profiles,
-#             logo=logo,  # Set logo here
-#         )
-#         registration.save()  # Save the registration to the database
-
-#         # Direct response after successful registration
-#         return HttpResponse("Business registration successful.")
-
-#     # If GET request, just render the registration form
-#     return render(request, 'BusinessREG.html')
 
 
 
@@ -446,3 +399,11 @@ def make_loan_payment(request, loan_id):
         return redirect('loan_status', loan_id=loan_id)
 
     return render(request, 'make_payment.html', {'loan': loan})
+
+
+
+def chatbox(request):
+    return render(request, 'chatbox.html')
+
+def business_grow(request):
+    return render(request, 'growbusiness.html')
