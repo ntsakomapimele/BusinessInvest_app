@@ -1,39 +1,82 @@
-# your_app/admin.py
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser, BusinessRegistration
+from .models import (
+    BusinessRegistration,
+    CustomUser,
+    BusinessType,
+    BusinessResource,
+    MicroLoan,
+    LoanPayment
+)
 
-class CustomUserAdmin(UserAdmin):
-    # Define fields to be displayed in the admin interface
-    list_display = ('email', 'is_staff', 'is_active', 'is_superuser')
-    list_filter = ('is_staff', 'is_active', 'is_superuser')
-    search_fields = ('email',)
-    ordering = ('email',)
-
-    # Define fields for creating and editing users in the admin
-    fieldsets = (
-        (None, {'fields': ('email', 'password')}),
-        ('Permissions', {'fields': ('is_staff', 'is_active', 'is_superuser')}),
-    )
-    add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2', 'is_staff', 'is_active'),
-        }),
-    )
-
-    # Remove groups and user_permissions as CustomUser does not have these fields
-    filter_horizontal = ()
-
-admin.site.register(CustomUser, CustomUserAdmin)
-
-# Register BusinessRegistration model
+# BusinessRegistration Admin
+@admin.register(BusinessRegistration)
 class BusinessRegistrationAdmin(admin.ModelAdmin):
     list_display = ('business_name', 'industry', 'annual_revenue', 'submitted_at')
     search_fields = ('business_name', 'industry')
     list_filter = ('industry', 'submitted_at')
+    date_hierarchy = 'submitted_at'
 
-admin.site.register(BusinessRegistration, BusinessRegistrationAdmin)
-class BusinessRegistrationAdmin(admin.ModelAdmin):
-    list_display = ['business_name', 'ownership', 'annual_revenue', 'submitted_at']  # Use 'submitted_at' as a field
-    list_filter = ['ownership', 'submitted_at']
+# CustomUser Admin
+@admin.register(CustomUser)
+class CustomUserAdmin(admin.ModelAdmin):
+    list_display = ('email', 'is_active', 'is_staff', 'is_superuser')
+    search_fields = ('email',)
+    list_filter = ('is_active', 'is_staff', 'is_superuser')
+
+# BusinessType Admin
+@admin.register(BusinessType)
+class BusinessTypeAdmin(admin.ModelAdmin):
+    list_display = ('name', 'slug')
+    prepopulated_fields = {'slug': ('name',)}
+
+# BusinessResource Admin
+@admin.register(BusinessResource)
+class BusinessResourceAdmin(admin.ModelAdmin):
+    list_display = ('title', 'business_type', 'order')
+    list_filter = ('business_type',)
+    search_fields = ('title', 'description')
+
+# MicroLoan Admin
+@admin.register(MicroLoan)
+class MicroLoanAdmin(admin.ModelAdmin):
+    list_display = ('business', 'amount_requested', 'status', 'application_date', 'remaining_balance')
+    list_filter = ('status', 'payment_frequency')
+    search_fields = ('business__business_name', 'purpose')
+    date_hierarchy = 'application_date'
+    readonly_fields = ('total_amount', 'total_interest', 'performance_score')
+
+    fieldsets = (
+        ('Basic Information', {
+            'fields': ('business', 'amount_requested', 'interest_rate', 'term_months', 'purpose')
+        }),
+        ('Status and Dates', {
+            'fields': ('status', 'application_date', 'approval_date', 'start_date', 'end_date')
+        }),
+        ('Payment Information', {
+            'fields': ('monthly_payment', 'payment_frequency', 'next_payment_date', 'remaining_balance')
+        }),
+        ('Performance', {
+            'fields': ('performance_score', 'principal_paid', 'interest_paid', 'total_payments_made')
+        }),
+    )
+
+# LoanPayment Admin
+@admin.register(LoanPayment)
+class LoanPaymentAdmin(admin.ModelAdmin):
+    list_display = ('loan', 'amount', 'payment_date', 'status', 'transaction_id')
+    list_filter = ('status', 'payment_date')
+    search_fields = ('loan__business__business_name', 'transaction_id')
+    date_hierarchy = 'payment_date'
+    readonly_fields = ('total_amount',)
+
+    fieldsets = (
+        ('Payment Information', {
+            'fields': ('loan', 'amount', 'payment_date', 'status', 'transaction_id')
+        }),
+        ('Amount Breakdown', {
+            'fields': ('principal_amount', 'interest_amount', 'due_date')
+        }),
+        ('Additional Information', {
+            'fields': ('notes',)
+        }),
+    )
