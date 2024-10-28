@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invest in {{ business.business_name }}</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background */
+            color: #343a40; /* Dark text */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            padding: 1rem;
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .invest-form {
+            background-color: #ffffff; /* White background for the form */
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .btn-invest {
+            background-color: #6a11cb;
+            color: white;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-invest:hover {
+            background-color: #2575fc;
+        }
+
+        .share-details {
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <span class="navbar-brand">BidnessVille</span>
+        </div>
+    </nav>
+
+    <div class="header">
+        <h1>Invest in {{ business.business_name }}</h1>
+        <p class="lead">Enter the number of shares you would like to invest in.</p>
+    </div>
+
+    <div class="container my-5">
+        <div class="invest-form">
+            <form method="POST" id="investment-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="shares" class="form-label">Number of Shares:</label>
+                    <input type="number" name="shares" class="form-control" min="1" max="{{ business.available_shares }}" required id="shares">
+                </div>
+                <div class="share-details">
+                    <p><strong>Share Price:</strong> ${{ business.share_price }}</p>
+                    <p><strong>Available Shares:</strong> {{ business.available_shares }}</p>
+                    <p><strong>Total Investment:</strong> $<span id="total-price">0.00</span></p>
+                </div>
+                <button type="submit" class="btn btn-invest">Invest</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Update total price based on the number of shares entered
+        const sharesInput = document.getElementById('shares');
+        const totalPriceDisplay = document.getElementById('total-price');
+        const sharePrice = {{ business.share_price }};
+
+        sharesInput.addEventListener('input', function() {
+            const numberOfShares = parseInt(sharesInput.value) || 0;
+            const totalPrice = (numberOfShares * sharePrice).toFixed(2);
+            totalPriceDisplay.textContent = totalPrice;
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4. 5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

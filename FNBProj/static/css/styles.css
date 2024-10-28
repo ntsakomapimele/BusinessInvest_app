@@ -1,0 +1,122 @@
+/* Base Styles */
+body {
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Beautiful gradient background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Elegant font */
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    margin: 0; /* Remove default margin */
+}
+
+.login-container, .modal-content {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
+}
+
+/* Headings */
+h2 {
+    color: #333; /* Dark color for headings */
+    margin-bottom: 20px; /* Spacing below headings */
+    font-size: 1.8em; /* Increased font size */
+}
+
+/* Form Elements */
+.form-label {
+    font-weight: bold; /* Bold labels */
+    margin-bottom: 5px; /* Space between label and input */
+    display: block; /* Labels take full width */
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+select,
+textarea {
+    border: 2px solid #e0e0e0; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 12px; /* Padding inside input fields */
+    width: 100%; /* Full width */
+    font-size: 1em; /* Increased font size */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transition for border and shadow */
+}
+
+/* Input Focus */
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #6a11cb; /* Change border color on focus */
+    box-shadow: 0 0 8px rgba(106, 17, 203, 0.5); /* Shadow on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Button Styles */
+.btn {
+    background-color: #6a11cb; /* Primary button color */
+    border: none; /* Remove default border */
+    color: white; /* White text */
+    padding: 12px 20px; /* Padding inside buttons */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1em; /* Increased font size */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Transition for hover */
+    margin-top: 15px; /* Space above buttons */
+}
+
+/* Button Hover Effect */
+.btn:hover {
+    background-color: #2575fc; /* Darker shade on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+}
+
+/* Error Messages */
+.form-error-message {
+    color: #d9534f; /* Red color for error messages */
+    font-size: 0.9em; /* Slightly smaller font size */
+    margin-top: 5px; /* Spacing above error messages */
+}
+
+/* Modal Styles */
+.modal-content {
+    border: none; /* Remove default modal border */
+    border-radius: 10px; /* Rounded corners for modal */
+}
+
+/* Transition Effects */
+.modal.fade {
+    transition: opacity 0.3s ease; /* Smooth fade transition */
+}
+
+/* Footer Links */
+footer {
+    margin-top: 20px; /* Space above footer */
+    font-size: 0.9em; /* Smaller font size */
+}
+
+/* Footer Links Styling */
+footer a {
+    color: #6a11cb; /* Link color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s; /* Transition for link color */
+}
+
+footer a:hover {
+    color: #2575fc; /* Change color on hover */
+}
+
+
+
+/* Stylings for dashboard */
+
+
+
+
+    /* End of dashboard stylings */
+    

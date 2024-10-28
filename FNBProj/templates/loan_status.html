@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Status - MyBusiness</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .panel {
+            border: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+        .panel-title {
+            color: #6a11cb;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .status-badge {
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        .badge-success {
+            background-color: #28a745;
+            color: white;
+        }
+        .badge-warning {
+            background-color: #ffc107;
+            color: #000;
+        }
+        .badge-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+        .badge-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+        .badge-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        .icon {
+            margin-bottom: 1rem;
+        }
+        .detail-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+        .detail-value {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        footer {
+            background-color: #6a11cb;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 30px 30px 0 0;
+            margin-top: 20px;
+        }
+        .btn-custom {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 15px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .btn-custom:hover {
+            background: #2575fc;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background: linear-gradient(135deg, #6a11cb, #2575fc);">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#"><strong>MyBusiness</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'dashboard' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Invest</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Learn</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">My Business</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Contact Us</a >
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <div class="header">
+            <h1>Loan Status</h1>
+            <p class="text-muted">View your current loan details and status</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card panel">
+                    <div class="card-body">
+                        <div class="icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                            </svg>
+                        </div>
+                        <h2 class="panel-title">Current Loan Details</h2>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="detail-label">Loan Amount</div>
+                                <div class="detail-value">${{ loan.amount_requested }}</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="detail-label">Status</div>
+                                <span class="status-badge badge-{% if loan.status == 'APPROVED' %}success{% elif loan.status == 'PENDING' %}warning{% elif loan.status == 'REJECTED' %}danger{% elif loan.status == 'ACTIVE' %}info{% elif loan.status == 'PAID' %}secondary{% endif %}">
+                                    {{ loan.status }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-4">
+                                <div class="detail-label">Interest Rate</div>
+                                <div class="detail-value">{{ loan.interest_rate }}%</div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="detail-label">Monthly Payment</div>
+                                <div class="detail-value">${{ loan.monthly_payment }}</div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="detail-label">Term Length</div>
+                                <div class="detail-value">{{ loan.term_months }} months</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="detail-label">Loan Purpose</div>
+                            <div class="detail-value">{{ loan.purpose }}</div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="detail-label">Application Date</div>
+                                <div class="detail-value">{{ loan.application_date|date:"F d, Y" }}</div>
+                            </div>
+                            {% if loan.approval_date %}
+                            <div class="col-md-6">
+                                <div class="detail-label">Approval Date</div>
+                                <div class="detail-value">{{ loan.approval_date|date:"F d, Y" }}</div>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="{% url 'my_loans' loan.business.id %}" class="btn btn-custom">Back to My Loans</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Schedule Section -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card panel">
+                    <div class="card-body">
+                        <h2 class="panel-title">Payment Schedule</h2>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Payment Date</th>
+                                        <th>Principal</th>
+                                        <th>Interest</th>
+                                        <th>Total Payment</th>
+                                        <th>Remaining Balance</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for payment in payment_schedule %}
+                                    <tr>
+                                        <td>{{ payment.due_date|date:"F d, Y" }}</td>
+                                        <td>${{ payment.principal_amount|floatformat:2 }}</td>
+                                        <td>${{ payment.interest_amount|floatformat:2 }}</td>
+                                        <td>${{ payment.total_amount|floatformat:2 }}</td>
+                                        <td>${{ payment.remaining_balance|floatformat:2 }}</td>
+                                        <td>
+                                            <span class="badge {% if payment.is_paid %}badge-success{% elif payment.is_overdue %}badge-danger{% else %}badge-warning{% endif %}">
+                                                {% if payment.is_paid %}Paid
+                                                {% elif payment.is_overdue %}Overdue
+                                                {% else %}Pending
+                                                {% endif %}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="container">
+        <p> 2024 MyBusiness. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+    
+    <!-- Custom JavaScript for interactive features -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add any interactive features here
+            
+            // Example: Update remaining balance color based on value
+            const balanceElements = document.querySelectorAll('.remaining-balance');
+            balanceElements.forEach(element => {
+                const balance = parseFloat(element.textContent.replace('$', '').replace(',', ''));
+                if (balance <= 0) {
+                    element.classList.add('text-success');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

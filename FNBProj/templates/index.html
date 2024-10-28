@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Overview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .panel {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        img {
+            display: block;
+            margin: 0 auto 10px;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    {% for business in businesses %}
+        <div class="panel">
+            <h2>{{ business.business_name }}</h2>
+            <img src="{{ business.logo.url }}" alt="Company Logo">
+            <p><strong>Ownership:</strong> {{ business.ownership }}</p>
+            <p><strong>Tax Registration:</strong> {{ business.tax_reg }}</p>
+            <p><strong>Industry:</strong> {{ business.industry }}</p>
+            <p><strong>Annual Revenue:</strong> ${{ business.annual_revenue }}</p>
+            <p><strong>Product Info:</strong> {{ business.product_info }}</p>
+            <a href="{{ business.business_plan.url }}">Download Business Plan</a><br>
+            <a href="{{ business.financial_statements.url }}">Download Financial Statements</a><br>
+            <a href="{{ business.legal_documents.url }}">Download Legal Documents</a><br>
+            <a href="{{ business.management_profiles.url }}">Download Management Profiles</a>
+        </div>
+    {% endfor %}
+</div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BidnessVille - Business Registrations</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        .navbar {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            border-radius: 15px 15px 0 0 !important;
+            padding: 1rem;
+        }
+
+        .business-logo {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #6a11cb;
+        }
+
+        .document-link {
+            color: #6a11cb;
+            text-decoration: none;
+            margin: 0.5rem;
+            display: inline-block;
+        }
+
+        .document-link:hover {
+            color: #2575fc;
+            text-decoration: none;
+        }
+
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">BidnessVille</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'dashboard' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'invest_in_business' %}">Invest</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'view_registrations' %}">My Business</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="mb-4">Available Investment Opportunities</h2>
+        
+        <div class="row">
+            {% for registration in registrations %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">{{ registration.business_name }}</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        {% if registration.logo %}
+                            <img src="{{ registration.logo.url }}" alt="Business Logo" class="business-logo mb-3">
+                        {% else %}
+                            <i class="fas fa-building fa-4x mb-3" style="color: #6a11cb;"></i>
+                        {% endif %}
+
+                        <div class="business-details mb-3">
+                            <p><strong>Industry:</strong> {{ registration.industry }}</p>
+                            <p><strong>Annual Revenue:</strong> ${{ registration.annual_revenue }}</p>
+                            <p><strong>Registered:</strong> {{ registration.submitted_at|date:"M d, Y" }}</p>
+                        </div>
+
+                        <div class="documents">
+                            {% if registration.business_plan %}
+                                <a href="{{ registration.business_plan.url }}" class="document-link">
+                                    <i class="fas fa-file-pdf"></i> Business Plan
+                                </a>
+                            {% endif %}
+                            {% if registration.financial_statements %}
+                                <a href="{{ registration.financial_statements.url }}" class="document-link">
+                                    <i class="fas fa-chart-line"></i> Financials
+                                </a>
+                            {% endif %}
+                            {% if registration.legal_documents %}
+                                <a href="{{ registration.legal_documents.url }}" class="document-link">
+                                    <i class="fas fa-file-contract"></i> Legal Docs
+                                </a>
+                            {% endif %}
+                        </div>
+
+                        <a href="{% url 'business_overview' business_id=registration.id %}" 
+                           class="btn btn-primary mt-3">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <div class="alert alert-info">
+                    No business registrations found at this time.
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
