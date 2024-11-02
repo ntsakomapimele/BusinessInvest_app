@@ -2,7 +2,7 @@
 from django.contrib.auth import get_user_model
 from django import forms
 from .models import MicroLoan
-
+from .models import Post
 class CustomUserCreationForm(forms.ModelForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
@@ -35,4 +35,13 @@ class MicroLoanApplicationForm(forms.ModelForm):
         }
 
 
+# forms.py
 
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['content']
+        widgets = {
+            'content': forms.Textarea(attrs={'rows': 7, 'placeholder': 'Share your business success story...'})
+        }

@@ -32,4 +32,5 @@ urlpatterns = [
 
     path('invest/', views.invest_in_business, name='invest_in_business'),
     path('invest/<int:business_id>/', views.make_investment, name='make_investment'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+path('chatbox/', views.chatbox_view, name='chatbox_view'),
+    path('chatbox/add_comment/<int:post_id>/', views.add_comment, name='add_comment'),] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

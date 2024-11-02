@@ -26,6 +26,14 @@ from django.contrib.auth import get_user_model
 from django.http import HttpResponse
 from django.core.mail import BadHeaderError
 from django.db.models import Q
+from django.urls import reverse
+from .models import Post
+from .forms import PostForm
+from django.core.exceptions import ValidationError
+
+from .models import Post, Comment
+from django.contrib.auth.decorators import login_required
+
 # Add these imports
 from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
 
@@ -427,3 +435,32 @@ def make_investment(request, business_id):
             messages.error(request, str(e))
 
     return render(request, 'make_investment.html', {'business': business})
+
+
+@login_required
+
+# def chatbox_view(request):
+#     return render(request, 'chatbox.html')
+
+
+
+
+@login_required
+def chatbox_view(request):
+    if request.method == 'POST':
+        content = request.POST.get('content')
+        post = Post(user=request.user, content=content)
+        post.save()
+        return redirect('chatbox_view')  # Adjust as per your URL configuration
+
+    posts = Post.objects.all().order_by('-created_at')
+    return render(request, 'chatbox.html', {'posts': posts})
+
+@login_required
+def add_comment(request, post_id):
+    if request.method == 'POST':
+        content = request.POST.get('content')
+        post = Post.objects.get(id=post_id)
+        comment = Comment(post=post, user=request.user, content=content)
+        comment.save()
+        return redirect('chatbox_view')  # Adjust as per your URL configuration

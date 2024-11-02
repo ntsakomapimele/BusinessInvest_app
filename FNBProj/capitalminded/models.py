@@ -5,6 +5,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from decimal import Decimal
 from dateutil.relativedelta import relativedelta
+from django.core.exceptions import ValidationError
+from django.utils import timezone
 
 class BusinessRegistration(models.Model):
     user = models.ForeignKey('CustomUser', on_delete=models.CASCADE)  # Use string reference
@@ -464,3 +466,24 @@ class LoanPayment(models.Model):
             self.loan.save()
         
         super().save(*args, **kwargs)
+        
+# models.py
+from django.db import models
+from django.conf import settings  # Import settings
+
+class Post(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)  # Update this line
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Post by {self.user.username} on {self.created_at}"
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)  # Update this line
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Comment by {self.user.username} on {self.created_at}"
